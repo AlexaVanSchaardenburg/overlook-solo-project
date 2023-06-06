@@ -1,4 +1,4 @@
-# Overlook Room Booking
+# Overlook Room Booking Application
 
 ## Clone This Repo
 
