@@ -13,6 +13,20 @@
   <title>Overlook Retreats</title>
 </head>
 <body>
+  <nav class="flex">
+    <div>
+      <div class="flex">
+        <h1>Book your next retreat now</h1>
+        <button id="return-to-login">username<span class="material-icons-round">switch_account</span>
+        </button>
+      </div>
+      <form class="flex dash-element" id="select-date-form">
+        <input type="text" id="date-selector" placeholder="select date"></input>
+        <button id="view-available-rooms">choose a room</button>
+      </form>
+    </div>
+    <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png">
+  </nav>
   <main class="flex hidden" id="login-page">
     <img id="login-img" alt="Inviting and sofisticated bed set" src="../images/login-img.jpg">
     <div id="login">
@@ -21,29 +35,20 @@
         <h1>Login to sweet dreams ...</h3>
         <form id="login-form">
           <label for="username-input">username:</label>
-          <input type="text" class="input" id="username-input" placeholder="type username here">
+          <input type="text" id="username-input" placeholder="type username here">
           <label for="password-input">password:</label>
-          <input type="text" class="input" id="password-input" placeholder="type password here">
+          <input type="text" id="password-input" placeholder="type password here">
           <button>login</button>
         </form>
       </div>
     </div>
   </main>
   <main id="dashboard">
-    <nav class="flex">
-      <div>
-        <div class="flex">
-          <h1>Book your next retreat now</h1>
-          <button id="return-to-login">username<span class="material-icons-round">switch_account</span>
-          </button>
-        </div>
-        <div class="flex">
-          <div>Date picker here</div>
-          <button>choose a room</button>
-        </div>
-      </div>
-      <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png"
-    </nav>
+    <div class="flex" id="bookings-title-bar">
+      <h2>All Bookings</h2>
+      <p>total spent</p>
+      <p>1,721.07</p>
+    </div>
   </main>
   <script src="bundle.js"></script>
   <script src="datepicker.min.js"></script>

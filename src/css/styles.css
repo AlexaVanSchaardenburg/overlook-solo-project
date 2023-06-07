@@ -23,7 +23,7 @@ h1{
   font-size: 28px;
 }
 
-.input{
+input{
   border: none;
   border-radius: 1em;
   margin-bottom: 0.5em;
@@ -48,6 +48,23 @@ nav{
 #nav-logo{
   width: 7em;
   margin: 2em 3em;
+}
+
+#return-to-login{
+  background: #2C2C54;
+  color: white;
+  height: 2em;
+  
+}
+
+#select-date-form{
+  background: white;
+  border-radius: 1em;
+}
+
+#view-available-rooms{
+  background: #2C2C54;
+  color: white;
 }
 
 /* LOGIN PAGE */
@@ -91,7 +108,17 @@ nav{
 }
 
 /* MAIN PAGE */
+#dashboard{
+  background: #2C2C54;
+  border-radius: 0 2em 2em 0;
+  margin: 1em 1em 1em 0;
+  padding: 1em;
+}
 
+#bookings-title-bar{
+  background: white;
+
+}
 /* MAKE BOOKING PAGE */
 
 .hidden{
