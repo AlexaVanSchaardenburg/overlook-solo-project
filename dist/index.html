@@ -4,13 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;500&family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+  <title>Overlook Retreats</title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <main class="flex" id="login-page">
+    <img id="login-img" alt="Inviting and sofisticated bed set" src="../images/login-img.jpg">
+    <div id="login">
+      <img id="login-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/logo-grey.png">
+      <div id="login-box">
+        <h1>Login to sweet dreams ...</h3>
+        <form id="login-form">
+          <label for="username-input">username:</label>
+          <input type="text" class="input" id="username-input" placeholder="type username here">
+          <label for="password-input">password:</label>
+          <input type="text" class="input" id="password-input" placeholder="type password here">
+          <button>login</button>
+        </form>
+      </div>
+    </div>
+  </main>
   <script src="bundle.js"></script>
-
 </body>
 </html>

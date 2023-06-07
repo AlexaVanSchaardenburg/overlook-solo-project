@@ -1,3 +1,86 @@
+/* font-family: 'Alumni Sans', sans-serif;
+font-family: 'Oleo Script Swash Caps', cursive; */
+
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background: #EEEEEE;
+}
+
+.flex{
+  display: flex;
+}
+
+body{
+  height: 100%;
+  margin: 0;
+}
+
+h1{
+  background: #FDD35D;
+  border-radius: 2.5em;
+  padding: 0.75em;
+  color: white; 
+  font-family: 'Oleo Script Swash Caps';
+  font-size: 28px;
+}
+
+.input{
+  border: none;
+  border-radius: 1em;
+  margin-bottom: 0.5em;
+}
+
+button{
+    border: none;
+    border-radius: 1em;
+    background: white; 
+    color: #868686;
+    /* margin-top: 0.75em; */
+}
+
+/* LOGIN PAGE */
+
+#login-page{
+  align-items: center;
+}
+#login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+} 
+
+#login-img{
+  width: 50%;
+  height: 100%;
+}
+
+#login-logo{
+ width: 11em;
+}
+
+#login-box{
+  background: #466478;
+  padding: 0.5em 1em 1em;
+  border-radius: 1.5em;
+  margin: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#login-form{
+  color: white;
+  font-family: 'Alumni Sans';
+  font-weight: lighter;
+  font-size: 1em;
+  width: 10em;
+}
+
+/* MAIN PAGE */
+
+/* MAKE BOOKING PAGE */
+
+.hidden{
+  display: none;
 }
