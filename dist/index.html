@@ -14,13 +14,16 @@
   <title>Overlook Retreats</title>
 </head>
 <body>
+
   <nav class="flex">
     <div>
       <div class="flex">
         <h1>Book your next retreat now</h1>
-        <button id="home-button"><span class="material-symbols-rounded">home</span></button>
+        <div class="flex">
+          <button id="home-button"><span class="material-symbols-rounded">home</span></button>
         <button id="return-to-login">username<span class="material-icons-round">switch_account</span>
         </button>
+        </div>
       </div>
       <form class="flex dash-element" id="select-date-form">
         <span class="material-symbols-rounded">
@@ -32,6 +35,8 @@
     </div>
     <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png">
   </nav>
+
+
   <main class="flex hidden" id="login-page">
     <img id="login-img" alt="Inviting and sofisticated bed set" src="../images/login-img.jpg">
     <div id="login">
@@ -48,6 +53,8 @@
       </div>
     </div>
   </main>
+
+
   <main id="dashboard">
     <div class="flex" id="bookings-title-bar">
       <h2 id="all-bookings">All Bookings</h2>
@@ -58,16 +65,13 @@
           </span>1,721.07</p>
       </div>
     </div>
-    <div class="booking-display flex">
-      <h3 class="">Room Type</h3>
-      <p class="booking-date"><span class="material-symbols-rounded">
-        calendar_month
-        </span>Jan 24th, 2023</p>
-      <p class="booking-cost"><span class="material-symbols-rounded">
-        monetization_on
-        </span>358.40</p>
+    <div class="booking-display flex" id="booking-number">
+      <h3 class="room-type">Room Type</h3>
+      <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>Jan 24th, 2023</p>
+      <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>358.40</p>
     </div>
   </main>
+
   <script src="bundle.js"></script>
   <script src="datepicker.min.js"></script>
 </body>

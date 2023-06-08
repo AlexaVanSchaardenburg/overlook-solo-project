@@ -1,9 +1,14 @@
 /* font-family: 'Alumni Sans', sans-serif;
 font-family: 'Oleo Script Swash Caps', cursive; */
+*{
+  padding: 0;
+  margin: 0;
+}
+
 
 body {
   background: #EEEEEE;
-  font-family: 'Alumni Sans'
+  font-family: 'Alumni Sans';
 }
 
 .flex{
@@ -38,6 +43,7 @@ button{
     /* margin-top: 0.75em; */
 }
 
+
 /* NAV */
 nav{
   background: #466478;
@@ -66,7 +72,9 @@ nav{
 
 #select-date-form{
   background: white;
-  border-radius: 1em;
+  border-radius: 1.5em;
+  padding: 0.5em;
+  width: 17.5em;
 }
 
 #view-available-rooms{
@@ -127,20 +135,26 @@ nav{
 #bookings-title-bar{
   background: white;
   justify-content: space-between;
+  align-items: center;
   border-radius: 2em;
   margin: 1em;
-  width: 98%
+  width: 98%;
+  border: 2px solid red;
+  /* height: 4em; */
 }
 
 #all-bookings{
   font-family: 'Oleo Script Swash Caps';
-  font-size: 28px;
+  font-size: 2.8em;
   color: #2C2C54;
   padding-left: 0.25em;
+  border: 2px solid orange;
 }
 
 #total-cost-label{
-  color: #868686
+  color: #868686;
+  border: 2px solid pink;
+  font-size: 1.4em;
 }
 
 #total-cost{
@@ -148,17 +162,39 @@ nav{
   color: white;
   font-size: 30px;
   font-weight: bold;
-  padding: 0.25em 0.75em;
+  /* padding: 0.25em 0.75em; */
   border-radius: 1em;
+  border: 2px solid green;
 }
 
 .booking-display{
   background: #466478;
-  border-radius: 2em;
+  border-radius: 3em;
   width: 90%;
   color: white;
-  padding: 1em;
+  font-size: 1.4em;
+  /* border: solid blue 2px */
+  justify-content: space-between;
 }
+
+.room-type{
+  padding-left: 0.4em;
+  margin: 0.1em;
+  /* margin-right: 15em; */
+  font-size: 2.5em;
+  /* border: blue solid 2px; */
+  width: 60%
+}
+
+.booking-date{
+  border: blue solid 2px;
+}
+
+.booking-cost{
+  /* border: blue solid 2px; */
+  margin-right: 2em;
+}
+
 /* MAKE BOOKING PAGE */
 
 .hidden{
