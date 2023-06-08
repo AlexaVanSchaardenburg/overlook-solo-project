@@ -3,6 +3,7 @@ font-family: 'Oleo Script Swash Caps', cursive; */
 
 body {
   background: #EEEEEE;
+  font-family: 'Alumni Sans'
 }
 
 .flex{
@@ -101,7 +102,6 @@ nav{
 
 #login-form{
   color: white;
-  font-family: 'Alumni Sans';
   font-weight: lighter;
   font-size: 1em;
   width: 10em;
@@ -112,12 +112,39 @@ nav{
   background: #2C2C54;
   border-radius: 0 2em 2em 0;
   margin: 1em 1em 1em 0;
-  padding: 1em;
+  padding: 0 2em 2em 0;
 }
 
 #bookings-title-bar{
   background: white;
+  justify-content: space-between;
+  border-radius: 2em;
+  margin: 1em;
+}
 
+#all-bookings{
+  font-family: 'Oleo Script Swash Caps';
+  font-size: 28px;
+  color: #2C2C54;
+  padding-left: 0.25em;
+}
+
+#total-cost-label{
+  color: #868686
+}
+
+#total-cost{
+  background: #868686;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 0.25em 0.75em;
+  border-radius: 1em;
+}
+
+.booking-display{
+  background: #466478;
+  border-radius: 1em;
 }
 /* MAKE BOOKING PAGE */
 
