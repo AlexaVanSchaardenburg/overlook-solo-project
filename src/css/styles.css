@@ -54,8 +54,14 @@ nav{
 #return-to-login{
   background: #2C2C54;
   color: white;
-  height: 2em;
+  height: 2.2em;
   
+}
+
+#home-button{
+  background: #2C2C54;
+  color: white;
+  height: 2.2em;
 }
 
 #select-date-form{
@@ -113,6 +119,9 @@ nav{
   border-radius: 0 2em 2em 0;
   margin: 1em 1em 1em 0;
   padding: 0 2em 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #bookings-title-bar{
@@ -120,6 +129,7 @@ nav{
   justify-content: space-between;
   border-radius: 2em;
   margin: 1em;
+  width: 98%
 }
 
 #all-bookings{
@@ -144,7 +154,10 @@ nav{
 
 .booking-display{
   background: #466478;
-  border-radius: 1em;
+  border-radius: 2em;
+  width: 90%;
+  color: white;
+  padding: 1em;
 }
 /* MAKE BOOKING PAGE */
 
