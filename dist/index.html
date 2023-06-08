@@ -15,7 +15,7 @@
 </head>
 <body>
 
-  <main class="flex hidden" id="login-page">
+  <main class="flex" id="login-page">
     <img id="login-img" alt="Inviting and sofisticated bed set" src="../images/login-img.jpg">
     <div id="login">
       <img id="login-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/logo-grey.png">
@@ -36,6 +36,13 @@
     </div>
   </main>
 
+
+
+
+
+
+
+
   <nav class="flex">
     <div>
       <div class="flex nav-buttons">
@@ -46,16 +53,42 @@
         </button>
         </div>
       </div>
-      <form class="flex dash-element" id="select-date-form">
-        <label for="date-selector">Select date:</label>
-        <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
-        <button id="view-available-rooms">choose a room</button>
-      </form>
+
+    <div class=" hidden flex">
+        <form class="flex dash-element nav-info" id="select-date-form">
+          <label for="date-selector">Select date:</label>
+          <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
+          <button id="view-available-rooms">choose a room</button>
+        </form>
+        <div class="flex hidden nav-info">
+          <p>date selected:</p>
+          <p id="current-date">Apr 28th, 2023</p>
+        </div>
+        <div class="flex nav-info">
+          <select id="room-select">
+              <option value="">choose room type</option>
+              <option value="residential">Residential Suite</option>
+              <option value="suite">Suite</option>
+              <option value="single">Single</option>
+              <option value="sunior">Junior</option>
+          </select>
+          <button id="filter-button">filter by type</button>
+        </div>
+      </div>
     </div>
+
     <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png">
   </nav>
 
-  <main id="dashboard">
+
+
+
+
+
+
+
+
+  <main class="dashboard">
     <div class="flex" id="bookings-title-bar">
       <h2 id="all-bookings">All Bookings</h2>
       <div class="flex">
@@ -69,6 +102,25 @@
       <h3 class="room-type">Room Type</h3>
       <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>Jan 24th, 2023</p>
       <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>358.40</p>
+    </div>
+  </main>
+
+
+
+
+
+
+  <main class="hidden" id="make-booking-page">
+    <div class="available-room flex">
+      <div class="rm-info">
+        <h3 class="room-type">Room Type</h3>
+        <div class="sub-info flex">
+          <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>Bed Type x num</p>
+          <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>Room Cost</p>
+          <p class="rm-info-element">This room has a bidet!</p>
+        </div>
+      </div>
+      <button class="book-room-button" id="rm-num">Book this room!</button>
     </div>
   </main>
 
