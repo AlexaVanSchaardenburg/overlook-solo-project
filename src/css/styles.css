@@ -40,46 +40,7 @@ button{
     border-radius: 1em;
     background: white; 
     color: #868686;
-    /* margin-top: 0.75em; */
-}
-
-
-/* NAV */
-nav{
-  background: #466478;
-  justify-content: space-between;
-  border-radius: 0 2em 2em 0;
-  margin: 1em 1em 1em 0;
-}
-
-#nav-logo{
-  width: 7em;
-  margin: 2em 3em;
-}
-
-#return-to-login{
-  background: #2C2C54;
-  color: white;
-  height: 2.2em;
-  
-}
-
-#home-button{
-  background: #2C2C54;
-  color: white;
-  height: 2.2em;
-}
-
-#select-date-form{
-  background: white;
-  border-radius: 1.5em;
-  padding: 0.5em;
-  width: 17.5em;
-}
-
-#view-available-rooms{
-  background: #2C2C54;
-  color: white;
+    padding: 0.5em;
 }
 
 /* LOGIN PAGE */
@@ -119,6 +80,77 @@ nav{
   font-weight: lighter;
   font-size: 1em;
   width: 10em;
+  padding: 1em;
+}
+
+.login-input{
+  padding: 0.5em;
+}
+
+#login-button{
+  margin-top: 0.5em;
+}
+
+/* NAV */
+nav{
+  background: #466478;
+  justify-content: space-between;
+  border-radius: 0 2em 2em 0;
+  margin: 1em 1em 1em 0;
+}
+
+.nav-buttons{
+  align-items: center;
+}
+
+#nav-header{
+  margin: 0.6em;
+}
+
+#nav-logo{
+  width: 7em;
+  margin: 2em 3em;
+}
+
+#return-to-login{
+  background: #2C2C54;
+  color: white;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em
+}
+
+#home-button{
+  background: #2C2C54;
+  color: white;
+  height: 2.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1em;
+}
+
+#select-date-form{
+  background: white;
+  border-radius: 1.5em;
+  padding: 0.5em;
+  width: 19em;
+  align-items: center;
+  justify-content: space-around;
+  margin-left: 0.6em
+}
+
+#date-selector{
+  background: #2C2C54;
+  color: white;
+  padding: 0.5em;
+}
+
+#view-available-rooms{
+  background: #2C2C54;
+  color: white;
 }
 
 /* MAIN PAGE */
@@ -139,8 +171,6 @@ nav{
   border-radius: 2em;
   margin: 1em;
   width: 98%;
-  border: 2px solid red;
-  /* height: 4em; */
 }
 
 #all-bookings{
@@ -148,13 +178,12 @@ nav{
   font-size: 2.8em;
   color: #2C2C54;
   padding-left: 0.25em;
-  border: 2px solid orange;
 }
 
 #total-cost-label{
   color: #868686;
-  border: 2px solid pink;
   font-size: 1.4em;
+  padding: 0.25em;
 }
 
 #total-cost{
@@ -162,9 +191,9 @@ nav{
   color: white;
   font-size: 30px;
   font-weight: bold;
-  /* padding: 0.25em 0.75em; */
+  padding: 0.25em;
   border-radius: 1em;
-  border: 2px solid green;
+  margin-right: 0.5em;
 }
 
 .booking-display{
@@ -173,25 +202,18 @@ nav{
   width: 90%;
   color: white;
   font-size: 1.4em;
-  /* border: solid blue 2px */
   justify-content: space-between;
+  align-items: center;
 }
 
 .room-type{
   padding-left: 0.4em;
   margin: 0.1em;
-  /* margin-right: 15em; */
   font-size: 2.5em;
-  /* border: blue solid 2px; */
   width: 60%
 }
 
-.booking-date{
-  border: blue solid 2px;
-}
-
 .booking-cost{
-  /* border: blue solid 2px; */
   margin-right: 2em;
 }
 
