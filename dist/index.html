@@ -7,9 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400;500&family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+  rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
   <title>Overlook Retreats</title>
 </head>
 <body>
+
   <main class="flex" id="login-page">
     <img id="login-img" alt="Inviting and sofisticated bed set" src="../images/login-img.jpg">
     <div id="login">
@@ -17,15 +22,108 @@
       <div id="login-box">
         <h1>Login to sweet dreams ...</h3>
         <form id="login-form">
-          <label for="username-input">username:</label>
-          <input type="text" class="input" id="username-input" placeholder="type username here">
-          <label for="password-input">password:</label>
-          <input type="text" class="input" id="password-input" placeholder="type password here">
-          <button>login</button>
+          <label for="username-input"><span class="material-symbols-outlined">
+            account_circle
+            </span>username:</label>
+          <input type="text" class="login-input" id="username-input" placeholder="type username here">
+          <label for="password-input"><span class="material-symbols-outlined">
+            lock
+            </span>password:</label>
+          <input type="text" class="login-input" id="password-input" placeholder="type password here">
+          <button id="login-button">login</button>
         </form>
       </div>
     </div>
   </main>
+
+
+
+
+
+
+
+
+  <nav class="flex">
+    <div>
+      <div class="flex nav-buttons">
+        <h1 id="nav-header">Book your next retreat now</h1>
+        <div class="flex">
+          <button id="home-button"><span class="material-symbols-rounded">home</span></button>
+        <button id="return-to-login">username<span class="material-icons-round">switch_account</span>
+        </button>
+        </div>
+      </div>
+
+    <div class="flex">
+        <form class="flex dash-element nav-info" id="select-date-form">
+          <label for="date-selector">Select date:</label>
+          <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
+          <button id="view-available-rooms">choose a room</button>
+        </form>
+        <div class="flex nav-info">
+          <p>date selected:</p>
+          <p id="current-date">Apr 28th, 2023</p>
+        </div>
+        <div class="flex nav-info">
+          <select id="room-select">
+              <option value="">choose room type</option>
+              <option value="residential">Residential Suite</option>
+              <option value="suite">Suite</option>
+              <option value="single">Single</option>
+              <option value="sunior">Junior</option>
+          </select>
+          <button id="filter-button">filter by type</button>
+        </div>
+      </div>
+    </div>
+
+    <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png">
+  </nav>
+
+
+
+
+
+
+
+
+
+  <main class="dashboard">
+    <div class="flex" id="bookings-title-bar">
+      <h2 id="all-bookings">All Bookings</h2>
+      <div class="flex">
+        <p id="total-cost-label">total spent: </p>
+        <p id="total-cost"><span class="material-symbols-rounded">
+          monetization_on
+          </span>1,721.07</p>
+      </div>
+    </div>
+    <div class="booking-display flex" id="booking-number">
+      <h3 class="room-type">Room Type</h3>
+      <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>Jan 24th, 2023</p>
+      <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>358.40</p>
+    </div>
+  </main>
+
+
+
+
+
+
+  <main class="hidden" id="make-booking-page">
+    <div class="available-room flex">
+      <div class="rm-info">
+        <h3 class="room-type">Room Type</h3>
+        <div class="sub-info flex">
+          <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>Bed Type x num</p>
+          <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>Room Cost</p>
+          <p class="rm-info-element">This room has a bidet!</p>
+        </div>
+      </div>
+      <button class="book-room-button" id="rm-num">Book this room!</button>
+    </div>
+  </main>
+
   <script src="bundle.js"></script>
 </body>
 </html>
