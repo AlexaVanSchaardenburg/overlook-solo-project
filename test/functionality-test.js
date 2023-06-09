@@ -1,6 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
-const {} = require('./sample-data.js');
+const {rooms, bookings} = require('./sample-data.js');
 const {checkPassword, findUserBookings, calcTotalBookingsCost, findAvailableRooms, filterRoomsByType} = require('../src/functionality.js');
 
 describe('Password check', function() {

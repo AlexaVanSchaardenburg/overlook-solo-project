@@ -1,4 +1,4 @@
-const checkLoginInfo = (username, password) => {
+const checkPassword = (password) => {
     //not sure if I even need this function
     //given username and password checks if username is customer(num 1-50) and password if overlook2021
 }
@@ -52,8 +52,10 @@ const filterRoomsByType = (availableRooms, type) => {
 }
 
 export {
-    checkLoginInfo,
+    checkPassword,
     findUserBookings,
     calcTotalBookingsCost,
+    findAvailableRooms,
+    filterRoomsByType
 
 }
