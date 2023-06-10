@@ -20,20 +20,11 @@ console.log('This is the JavaScript entry file - your code begins here.');
     - when login button is clicked - IF username and password return true, after fetch resolves, move to dashbaord page - if one is false rturn message that username or password is incorrect
     */
 
-//
-
-
+//VARIABLES
 
 let userData, roomsData, bookingsData;
 
-const userResponse = fetch(`http://localhost:3001/api/v1/customers/${//put user id here
-}`).then((response) => {
-  if(!response.ok) {
-    throw new Error(`${response.status}`)
-  } else {
-    return response.json();
-  }
-}).catch(error => alert(`${error.message}`));
+// //API CALLS
 
 const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
   if(!response.ok) {
@@ -51,32 +42,36 @@ const bookingsResponse = fetch('http://localhost:3001/api/v1/bookings').then((re
     }
   }).catch(error => alert(`${error.message}`));
 
-  window.addEventListener('load', () => {
-    Promise.all([userResponse, roomsResponse, bookingsResponse]).then(([user, rooms, bookings]) => {
-    
-    userData = user.user
-    roomsData = rooms.rooms
-    bookingsData = bookings.bookings
+//QUERY SELECTORS
 
-    //instead of doing rooms and bookings here do them on click of the login button to display data - then it should be available to the page when the user selects a date
-    
-    // showRecipesPage();
-    // user = selectRandomUser(usersData);
-    // displayAllRecipes(recipeData);
-    // return user;
-    })});
+const loginButton = document.querySelector('#login-button');
+const homeButton = document.querySelector('.home-button');
+const returnToLoginButton = document.querySelector('#return-to-login');
+const chooseRoomButton = document.querySelector('#view-available-rooms');
+const filterByTypeButton = document.querySelector('#filter-button'); 
 
-    window.addEventListener('load', () => {
-        Promise.all([userResponse, roomsResponse, bookingsResponse]).then(([user, rooms, bookings]) => {
-        
-        userData = user.user
-        roomsData = rooms.rooms
-        bookingsData = bookings.bookings
+//EVENT LISTENERS
+
+//   window.addEventListener('load', () => {
+//     Promise.all([roomsResponse, bookingsResponse]).then(([rooms, bookings]) => {
     
-        //instead of doing rooms and bookings here do them on click of the login button to display data - then it should be available to the page when the user selects a date
-        
-        // showRecipesPage();
-        // user = selectRandomUser(usersData);
-        // displayAllRecipes(recipeData);
-        // return user;
-        })});
+//     roomsData = rooms.rooms
+//     bookingsData = bookings.bookings
+
+//     //do all this on buttton click for login button
+    
+//     // showRecipesPage();
+//     // user = selectRandomUser(usersData);
+//     // displayAllRecipes(recipeData);
+//     // return user;
+
+//     //maybe here I need to do all the dom updating for the past bookings and rooms data? -no
+//     //need to return the rooms data and the bookings data -no
+//     //to return both, might need to put these in different places? -no
+//     //can reassign all here and then they will be available eventually, only need to do the functionality for what ever needs to be visible ASAP (aka do rooms and bookings on page load and then they will be hpefully be ready by the time we use them on the next pages) -- need to wait on user being assigned 
+//     //I think this will work becuase javascipt will only put invoked functions into the call stack so the functions that need this data will not be in there until after the login button is click - thus this means that we should get back that data before we use it (counting on the user taking a bit of time to put in the user name and password and then clicking the login button)
+//     })});
+
+export {
+    
+}

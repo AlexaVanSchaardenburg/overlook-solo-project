@@ -123,7 +123,7 @@ nav{
   margin: 1em
 }
 
-#home-button{
+.home-button{
   background: #2C2C54;
   color: white;
   height: 2.2em;
