@@ -49,6 +49,13 @@ const homeButton = document.querySelector('.home-button');
 const returnToLoginButton = document.querySelector('#return-to-login');
 const chooseRoomButton = document.querySelector('#view-available-rooms');
 const filterByTypeButton = document.querySelector('#filter-button'); 
+const navBar = document.querySelector('');
+const dashPage = document.querySelector('');
+const bookingsPage = document.querySelector('') 
+const loginPage = document.querySelector('');
+const selectDateDisplay = document.querySelector('');
+const selectedDateDisplay = document.querySelector('');
+const filterByTypeDisplay = document.querySelector('');
 
 //EVENT LISTENERS
 
