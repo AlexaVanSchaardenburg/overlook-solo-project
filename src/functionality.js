@@ -3,13 +3,13 @@ const checkPassword = (password) => {
     //given username and password checks if username is customer(num 1-50) and password if overlook2021
 }
 
-const findUserBookings = (user) => {
+const findUserBookings = (user, bookings) => {
     //looks through all bookings and filters out only the ones for that user
     //data needed = bookings
     //returns array of usersBookings
 }
 
-const calcTotalBookingsCost = (userBookings) => {
+const calcTotalBookingsCost = (rooms, userBookings) => {
     //given all userBookings calculates the total spent on bookings 
     //data needed = rooms 
 }
