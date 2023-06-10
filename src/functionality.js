@@ -11,17 +11,11 @@ const findUserBookings = (user, bookings) => {
 }
 
 const calcTotalBookingsCost = (rooms, userBookings) => {
-
-    if(userBookings && rooms) {
         return userBookings
         .map(booking => booking.roomNumber)
         .reduce((total, roomNumber) => {
-            // console.log(rooms[roomNumber].costPerNight)
             return total += rooms[roomNumber-1].costPerNight
         },0)
-    } else {
-        return 0.00
-    }
 }
 
 const findAvailableRooms = (date) => {

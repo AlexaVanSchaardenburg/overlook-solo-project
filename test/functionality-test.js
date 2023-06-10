@@ -3,11 +3,12 @@ const expect = chai.expect;
 const {rooms, bookings, bookings2} = require('./sample-data.js');
 const {checkPassword, findUserBookings, calcTotalBookingsCost, findAvailableRooms, filterRoomsByType} = require('../src/functionality.js');
 
-let user1, user2
+let user1, user2, user3
 
 beforeEach(function() {
     user1 = {id: 1, name: 'Cilantro'}
     user2 = {id: 2, name: 'Pepper'}
+    user3 = {id: 6, name: 'Colin'}
 });
 
 describe('Password check', function() {
@@ -54,8 +55,9 @@ describe(`Calculate the total spent by the user on bookings`, function() {
 
         expect(totalSpentBy2).to.equal(1260.75)
     });
-    it('Should return 0 if no user is passed in', function() {
-        let noneSpent = calcTotalBookingsCost()
+    it('Should return 0 if user has no bookings', function() {
+        let userBookings3 = findUserBookings(user2, bookings)
+        let noneSpent = calcTotalBookingsCost(rooms, userBookings3)
 
         expect(noneSpent).to.equal(0.00)
     });
