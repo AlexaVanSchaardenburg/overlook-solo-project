@@ -41,52 +41,73 @@ describe(`Find user's bookings`, function() {
   });
 
 describe(`Calculate the total spent by the user on bookings`, function() {
-it('Should calculate the total spent by a user on all their bookings', function() {
-    let userBookings1 = findUserBookings(user1, bookings)
-    let totalSpentBy1 = calcTotalCost(rooms, userBookings1)
+    it('Should calculate the total spent by a user on all their bookings', function() {
+        let userBookings1 = findUserBookings(user1, bookings)
+        let totalSpentBy1 = calcTotalCost(rooms, userBookings1)
 
-    expect(totalSpentBy1).to.equal(954.76)
-});
-it('Should calculate the total spent by a different user on all their bookings', function() {
-    let userBookings2 = findUserBookings(user2, bookings)
-    let totalSpentBy2 = calcTotalCost(rooms, userBookings2)
+        expect(totalSpentBy1).to.equal(954.76)
+    });
+    it('Should calculate the total spent by a different user on all their bookings', function() {
+        let userBookings2 = findUserBookings(user2, bookings)
+        let totalSpentBy2 = calcTotalCost(rooms, userBookings2)
 
-    expect(totalSpentBy2).to.equal(1260.75)
-});
-it('Should return 0 if no user is passed in', function() {
-    let noneSpent = calcTotalBookingsCost()
+        expect(totalSpentBy2).to.equal(1260.75)
+    });
+    it('Should return 0 if no user is passed in', function() {
+        let noneSpent = calcTotalBookingsCost()
 
-    expect(noneSpent).to.equal(0.00)
-});
+        expect(noneSpent).to.equal(0.00)
+    });
 });
 
 describe(`Find available rooms on a specific date`, function() {
-it('Should return an array of rooms available given a date', function() {
-    let availableRooms = findAvailableRooms('2022/04/22', bookings)
+    it('Should return an array of rooms available given a date', function() {
+        let availableRooms = findAvailableRooms('2022/04/22', bookings)
 
-    expect(availableRooms).to.deep.equal([
-        {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},{"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
-        {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
-        {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}
-    ])
-});
-it('Should return an array of rooms available given a different date', function() {
-    let availableRooms = findAvailableRooms('2022/01/24', bookings)
+        expect(availableRooms).to.deep.equal([
+            {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},{"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
+            {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
+            {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}
+        ])
+    });
+    it('Should return an array of rooms available given a different date', function() {
+        let availableRooms = findAvailableRooms('2022/01/24', bookings)
 
-    expect(availableRooms).to.deep.equal([
-        {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
-        {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
-        {"number":5,"roomType":"single room","bidet":true,"bedSize":"queen","numBeds":2,"costPerNight":340.17}
-    ])
-});
-it('Should return a message if no rooms are avialable', function() {
-    let availableRooms = findAvailableRooms('2022/01/01', bookings2)
+        expect(availableRooms).to.deep.equal([
+            {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
+            {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
+            {"number":5,"roomType":"single room","bidet":true,"bedSize":"queen","numBeds":2,"costPerNight":340.17}
+        ])
+    });
+    it('Should return a message if no rooms are avialable', function() {
+        let availableRooms = findAvailableRooms('2022/01/01', bookings2)
 
-    expect(availableRooms).to.equal(`It looks like there are no rooms available on Jan 1st, 2022! Please select a different date :)`)
-});
+        expect(availableRooms).to.equal(`It looks like there are no rooms available on Jan 1st, 2022! Please select a different date :)`)
+    });
 });
 
 describe(`Find rooms by type`, function() {
-it('', function() {
-});
+
+    let availableRooms
+    beforeEach(function() {
+        availableRooms = findAvailableRooms('2022/01/24', bookings)
+    })
+
+    it('Should return an array of rooms given the type and available rooms', function() {
+        let filteredRooms1 = filterRoomsByType(availableRooms, 'Residential Suite')
+
+        expect(filteredRooms1).to.deep.equal([{"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4}])
+    });
+    it('Should return an array of rooms given a different type and available rooms', function() {
+        let filteredRooms2 = filterRoomsByType(availableRooms, 'Single Room')
+
+        expect(filteredRooms2).to.deep.equal([{"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
+        {"number":5,"roomType":"single room","bidet":true,"bedSize":"queen","numBeds":2,"costPerNight":340.17}])
+    });
+    it('If no rooms of that type are available it should return an apology message', function() {
+        let filteredRooms3 = filterRoomsByType(availableRooms, 'Junior')
+
+        expect(filteredRooms3).to.equal(`There are no Junior's available on this date. Try changing your search date or room type.`)
+    });
+
 });
