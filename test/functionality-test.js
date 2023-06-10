@@ -1,6 +1,6 @@
 import chai from 'chai';
 const expect = chai.expect;
-const {rooms, bookings} = require('./sample-data.js');
+const {rooms, bookings, bookings2} = require('./sample-data.js');
 const {checkPassword, findUserBookings, calcTotalBookingsCost, findAvailableRooms, filterRoomsByType} = require('../src/functionality.js');
 
 let user1, user2
@@ -62,14 +62,31 @@ it('Should return 0 if no user is passed in', function() {
 
 describe(`Find available rooms on a specific date`, function() {
 it('Should return an array of rooms available given a date', function() {
+    let availableRooms = findAvailableRooms('2022/04/22', bookings)
+
+    expect(availableRooms).to.deep.equal([
+        {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},{"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
+        {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
+        {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44}
+    ])
 });
 it('Should return an array of rooms available given a different date', function() {
+    let availableRooms = findAvailableRooms('2022/01/24', bookings)
+
+    expect(availableRooms).to.deep.equal([
+        {"number":1,"roomType":"residential suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":358.4},
+        {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14},
+        {"number":5,"roomType":"single room","bidet":true,"bedSize":"queen","numBeds":2,"costPerNight":340.17}
+    ])
 });
 it('Should return a message if no rooms are avialable', function() {
+    let availableRooms = findAvailableRooms('2022/01/01', bookings2)
+
+    expect(availableRooms).to.equal(`It looks like there are no rooms available on Jan 1st, 2022! Please select a different date :)`)
 });
 });
 
-describe(`Finnd rooms by type`, function() {
+describe(`Find rooms by type`, function() {
 it('', function() {
 });
 });

@@ -18,15 +18,17 @@ const findAvailableRooms = (date) => {
     //given a date filter all the rooms to include only those that are not booked on that date
         //iteratet through bookingd array to filter out rooms that are booked for date 
             //(bookings.filter(booking => booking.date !== date))???
-        rooms.filter(room => {
             return bookings.forEach(booking => {
                 if (booking.roomNumber === room.number && booking.date !== date){
                     return true
-                } else {
+                } else if (booking.roomNumber !== room.number) {
                     return false
+                } else {
+                    return true
                 }
             })
-        })
+
+
         //above code goes through rooms array and for each room checks all of the bookings, if a booking is equal to that room number AND the booking date is NOT the date then the room is available
         //feel like I am missing some logic here for if the booking.roomNumber does not exisit at all
             //maybe could do a find to make sure that each booking exisists at least once and if it doesn't then don't do the forEach and just return true? 
