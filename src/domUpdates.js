@@ -1,6 +1,16 @@
 import {/* import helper functions here*/} from './functionality.js'
 import {/* import query selected items and data from page load here*/
-
+homeButton,
+returnToLoginButton,    
+chooseRoomButton,    
+filterByTypeButton,    
+navBar,    
+dashPage,    
+bookingsPage,   
+loginPage,   
+selectDateDisplay,    
+selectedDateDisplay,  
+filterByTypeDisplay
 } from './scripts.js'
 
 //FUNCTIONS
@@ -25,20 +35,14 @@ const showLoginPage = () => {
 };
 
 const showDashPage = () => {
-    //hide login page
-    hide()
-    //hide bookings page
-    hide()
-    //hide date selected and choose room type boxes
-    hide()
-    //hide home button
-    hide()
-    //show dash page
-    show()
-    //show nav
-    show()
-    //show select date drop down
-    show()
+    hide(loginPage)
+    hide(bookingsPage)
+    hide(homeButton)
+    hide(selectedDateDisplay)
+    hide(filterByTypeDisplay)
+    show(dashPage)
+    show(navBar)
+    show(selectDateDisplay)
 };
 
 const showBookingsPage = () => {
@@ -73,3 +77,7 @@ const loginToSite = () => {
     //     //add message to the DOM that the user name or password is incorrect
     // }
 };
+
+export {
+    showDashPage,
+}

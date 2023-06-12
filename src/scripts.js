@@ -9,6 +9,10 @@ import './images/login-img.jpg'
 import './images/logo-grey.png'
 import './images/blue-logo.png'
 
+import {
+  showDashPage,
+} from './domUpdates.js'
+
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -49,13 +53,13 @@ const homeButton = document.querySelector('.home-button');
 const returnToLoginButton = document.querySelector('#return-to-login');
 const chooseRoomButton = document.querySelector('#view-available-rooms');
 const filterByTypeButton = document.querySelector('#filter-button'); 
-const navBar = document.querySelector('');
-const dashPage = document.querySelector('');
-const bookingsPage = document.querySelector('') 
-const loginPage = document.querySelector('');
-const selectDateDisplay = document.querySelector('');
-const selectedDateDisplay = document.querySelector('');
-const filterByTypeDisplay = document.querySelector('');
+const navBar = document.querySelector('#nav-bar');
+const dashPage = document.querySelector('.dashboard');
+const bookingsPage = document.querySelector('#make-booking-page') 
+const loginPage = document.querySelector('#login-page');
+const selectDateDisplay = document.querySelector('.select-date-form');
+const selectedDateDisplay = document.querySelector('.selected-date');
+const filterByTypeDisplay = document.querySelector('.filter-by-type');
 
 //EVENT LISTENERS
 
@@ -79,6 +83,22 @@ const filterByTypeDisplay = document.querySelector('');
 //     //I think this will work becuase javascipt will only put invoked functions into the call stack so the functions that need this data will not be in there until after the login button is click - thus this means that we should get back that data before we use it (counting on the user taking a bit of time to put in the user name and password and then clicking the login button)
 //     })});
 
+
+loginButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  showDashPage();
+});
+
 export {
-    
+  homeButton,
+  returnToLoginButton,    
+  chooseRoomButton,    
+  filterByTypeButton,    
+  navBar,    
+  dashPage,    
+  bookingsPage,   
+  loginPage,   
+  selectDateDisplay,    
+  selectedDateDisplay,  
+  filterByTypeDisplay
 }

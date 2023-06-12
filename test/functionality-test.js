@@ -29,6 +29,10 @@ describe('Password check', function() {
     });
 });
 
+describe('Username check', function() {
+
+});
+
 describe(`Find user's bookings`, function() {
     it('Should return an array of bookings with userID: 1', function() {
         let userBookings1 = findUserBookings(user1, bookings)
