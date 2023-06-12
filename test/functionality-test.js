@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 const {rooms, bookings, bookings2} = require('./sample-data.js');
-const {checkPassword, findUserBookings, calcTotalBookingsCost, findAvailableRooms, filterRoomsByType} = require('../src/functionality.js');
+const {checkPassword, checkUsername, findUserBookings, calcTotalBookingsCost, findAvailableRooms, filterRoomsByType} = require('../src/functionality.js');
 
 let user1, user2, user3
 
@@ -26,6 +26,24 @@ describe('Password check', function() {
         let noPassword = checkPassword()
         
         expect(noPassword).to.equal(false)
+    });
+});
+
+describe('Username check', function() {
+    it('Should take in a username and return a user id', function() {
+        let userId = checkUsername('customer50')
+
+        expect(userId).to.equal('50')
+    });
+    it('Should take in a different username and return a user id', function() {
+        let userId = checkUsername('customer2')
+
+        expect(userId).to.equal('2')
+    });
+    it('Should return a message if no user name is entered', function() {
+        let noUsername = checkUsername()
+
+        expect(noUsername).to.equal('Please enter your username')
     });
 });
 
