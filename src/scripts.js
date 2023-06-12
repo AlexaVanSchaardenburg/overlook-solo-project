@@ -10,11 +10,10 @@ import './images/logo-grey.png'
 import './images/blue-logo.png'
 
 import {
-  showDashPage,
+  showLoginPage,
+  loginToSite,
 } from './domUpdates.js'
 
-
-console.log('This is the JavaScript entry file - your code begins here.');
 
 //LOGIN PAGE FUNCTIONALITY
     /*
@@ -23,10 +22,6 @@ console.log('This is the JavaScript entry file - your code begins here.');
     - uses checkPassword fucntion to checck password - return boolean
     - when login button is clicked - IF username and password return true, after fetch resolves, move to dashbaord page - if one is false rturn message that username or password is incorrect
     */
-
-//VARIABLES
-
-let userData, roomsData, bookingsData;
 
 // //API CALLS
 
@@ -60,6 +55,9 @@ const loginPage = document.querySelector('#login-page');
 const selectDateDisplay = document.querySelector('.select-date-form');
 const selectedDateDisplay = document.querySelector('.selected-date');
 const filterByTypeDisplay = document.querySelector('.filter-by-type');
+const usernameInput = document.querySelector('#username-input');
+const passwordInput = document.querySelector('#password-input');
+const loginErrorMessage = document.querySelector('.login-error-message')
 
 //EVENT LISTENERS
 
@@ -86,10 +84,16 @@ const filterByTypeDisplay = document.querySelector('.filter-by-type');
 
 loginButton.addEventListener('click', (event) => {
   event.preventDefault();
-  showDashPage();
+  loginToSite(usernameInput, passwordInput)
 });
 
+returnToLoginButton.addEventListener('click', showLoginPage)
+
+// chooseRoomButton.addEventListener('click', showAvailableRooms)
+
 export {
+  roomsResponse,
+  bookingsResponse,
   homeButton,
   returnToLoginButton,    
   chooseRoomButton,    
@@ -100,5 +104,6 @@ export {
   loginPage,   
   selectDateDisplay,    
   selectedDateDisplay,  
-  filterByTypeDisplay
+  filterByTypeDisplay,
+  loginErrorMessage,
 }
