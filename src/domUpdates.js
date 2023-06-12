@@ -23,7 +23,8 @@ loginPage,
 selectDateDisplay,    
 selectedDateDisplay,  
 filterByTypeDisplay,
-loginErrorMessage
+loginErrorMessage,
+bookingsDisplay
 } from './scripts.js'
 
 //VARIABLES
@@ -68,21 +69,7 @@ const showBookingsPage = () => {
 };
 
 const loginToSite = (usernameInput, passwordInput) => {
-    // //invoke username and password functions here
-    // let userID = '50'
-    // if(/*if password check come back as true AND user name returns something other than invailid username */){
-    //     const userResponse = fetch(`http://localhost:3001/api/v1/customers/${userID}`).then((response) => {
-    //         if(!response.ok) {
-    //             throw new Error(`${response.status}`)
-    //         } else {
-    //             return response.json();
-    //         }
-    //         }).catch(error => alert(`${error.message}`));
-    // //         //promise.all something or other here
-    //         //add code here to switch page views to dash board
-    // } else {
-    //     //add message to the DOM that the user name or password is incorrect
-    // }
+
 
 
     const userID = checkUsername(usernameInput.value)
@@ -103,11 +90,21 @@ const loginToSite = (usernameInput, passwordInput) => {
 
             user = userData
             rooms = roomsData
-            bookings = bookingsData
+            bookings = bookingsData.bookings
 
             //invoke functions to filter user bookings (h)
+            let userBookings = findUserBookings(user, bookings)
             //change innerHTML to display username
+            returnToLoginButton.innerText = user.name
             //change innerHTML to show users bookings
+            userBookings.forEach(booking => {
+                bookingsDisplay.innerHTML = ''
+                bookingsDisplay.innerHTML = `<div class="booking-display flex" id="booking-number">
+                <h3 class="room-type">Room Type</h3>
+                <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>Jan 24th, 2023</p>
+                <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>358.40</p>
+              </div>`
+            })
             //then invoke show dash (h)
         })
     } else {

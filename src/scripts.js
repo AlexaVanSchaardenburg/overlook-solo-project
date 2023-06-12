@@ -58,6 +58,7 @@ const filterByTypeDisplay = document.querySelector('.filter-by-type');
 const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
 const loginErrorMessage = document.querySelector('.login-error-message')
+const bookingsDisplay = document.querySelector('.booking-display')
 
 //EVENT LISTENERS
 
@@ -106,4 +107,5 @@ export {
   selectedDateDisplay,  
   filterByTypeDisplay,
   loginErrorMessage,
+  bookingsDisplay
 }
