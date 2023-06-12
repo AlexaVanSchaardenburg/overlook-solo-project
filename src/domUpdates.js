@@ -2,7 +2,6 @@ import {
     checkPassword,
     checkUsername,
     findUserBookings,
-    convertBookingsToRooms,
     calcTotalBookingsCost,
     findAvailableRooms,
     filterRoomsByType
@@ -93,22 +92,17 @@ const loginToSite = (usernameInput, passwordInput) => {
             rooms = roomsData.rooms
             bookings = bookingsData.bookings
 
-            //invoke functions to filter user bookings (h)
             let userBookings = findUserBookings(user, bookings)
-            console.log(userBookings)
-            // let usersBookedRooms = convertBookingsToRooms(userBookings, rooms)
-            //change innerHTML to display username
+            let userBookingsCost = calcTotalBookingsCost(rooms, userBookings)
+
             returnToLoginButton.innerText = `Log out of user ${user.name}`
-            //change innerHTML to show users bookings
-            // console.log(rooms)
             dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
-            <h2 id="all-bookings">All Bookings</h2>
-            <div class="flex">
-              <p id="total-cost-label">total spent: </p>
-              <p id="total-cost"><span class="material-symbols-rounded">
-                monetization_on
-                </span>1,721.07</p>
-            </div>`
+                <h2 id="all-bookings">All Bookings</h2>
+                <div class="flex">
+                    <p id="total-cost-label">total spent: </p>
+                    <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost}</p>
+                </div>`
+
             userBookings.forEach(booking => {
                 dashPage.innerHTML += `
                 <div class="booking-display flex" id="booking-number">
@@ -117,11 +111,9 @@ const loginToSite = (usernameInput, passwordInput) => {
                     <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>${rooms[booking.roomNumber-1].costPerNight}</p>
                 </div>`
             })
-            //then invoke show dash (h)
             showDashPage()
         })
     } else {
-        //change innerHTML to inlcude an error message above login button
         loginErrorMessage.innerText = 'Username or password is incorrect'
     }
 };
