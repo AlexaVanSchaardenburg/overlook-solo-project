@@ -30,33 +30,34 @@
             lock
             </span>password:</label>
           <input type="text" class="login-input" id="password-input" placeholder="type password here">
+          <p class="login-error-message"></p>
           <button id="login-button">login</button>
         </form>
       </div>
     </div>
   </main>
 <!-- NAV -->
-  <nav class="flex">
+  <nav class="flex hidden" id="nav-bar">
     <div>
       <div class="flex nav-buttons">
         <h1 id="nav-header">Book your next retreat now</h1>
         <div class="flex">
-          <button id="home-button"><span class="material-symbols-rounded">home</span></button>
+          <button class="home-button"><span class="material-symbols-rounded">home</span></button>
         <button id="return-to-login">username<span class="material-icons-round">switch_account</span>
         </button>
         </div>
       </div>
     <div class="flex">
-        <form class="flex dash-element nav-info" id="select-date-form">
+        <form class="flex dash-element nav-info select-date-form hidden">
           <label for="date-selector">Select date:</label>
           <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
           <button id="view-available-rooms">choose a room</button>
         </form>
-        <div class="flex nav-info">
+        <div class="flex nav-info selected-date">
           <p>date selected:</p>
           <p id="current-date">Apr 28th, 2023</p>
         </div>
-        <div class="flex nav-info">
+        <div class="flex nav-info filter-by-type">
           <select id="room-select">
               <option value="">choose room type</option>
               <option value="residential">Residential Suite</option>
@@ -71,7 +72,7 @@
     <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png">
   </nav>
 <!-- DASH -->
-  <main class="dashboard">
+  <main class="dashboard hidden">
     <div class="flex" id="bookings-title-bar">
       <h2 id="all-bookings">All Bookings</h2>
       <div class="flex">
@@ -88,7 +89,7 @@
     </div>
   </main>
 <!-- BOOKINGS -->
-  <main class="" id="make-booking-page">
+  <main class="hidden" id="make-booking-page">
     <div class="available-room flex">
       <div class="rm-info">
         <h3 class="room-type">Room Type</h3>
