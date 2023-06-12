@@ -6,6 +6,15 @@ const checkPassword = (password) => {
     }
 };
 
+const checkUsername = (username) => {
+    if(username){
+       let id = username.split('').splice(8).join('')
+       return id
+    } else {
+        return `Please enter your username`
+    }
+}
+
 const findUserBookings = (user, bookings) => {
     return bookings.filter(booking => booking.userID === user.id)
 }
@@ -45,9 +54,9 @@ const filterRoomsByType = (availableRooms, type) => {
 
 export {
     checkPassword,
+    checkUsername,
     findUserBookings,
     calcTotalBookingsCost,
     findAvailableRooms,
     filterRoomsByType
-
 }
