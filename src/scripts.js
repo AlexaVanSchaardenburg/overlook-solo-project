@@ -12,7 +12,8 @@ import './images/blue-logo.png'
 import {
   showLoginPage,
   loginToSite,
-  showAvailableRooms
+  showAllAvailableRooms,
+  showFilteredRooms
 } from './domUpdates.js'
 
 //API CALLS
@@ -51,6 +52,8 @@ const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
 const loginErrorMessage = document.querySelector('.login-error-message');
 const dateSelector = document.querySelector('#date-selector');
+const errorBoxForNoDate = document.querySelector('.error-for-no-date');
+const filterInput = document.querySelector('#room-select')
 
 //EVENT LISTENERS
 
@@ -63,8 +66,12 @@ returnToLoginButton.addEventListener('click', showLoginPage)
 
 chooseRoomButton.addEventListener('click', (event) => {
   event.preventDefault();
-  showAvailableRooms(dateSelector)
+  showAllAvailableRooms(dateSelector)
 });
+
+filterByTypeButton.addEventListener('click', () => {
+  showFilteredRooms(filterInput)
+})
 
 export {
   roomsResponse,
@@ -81,5 +88,6 @@ export {
   selectedDateDisplay,  
   filterByTypeDisplay,
   loginErrorMessage,
-  dateSelector
+  dateSelector,
+  errorBoxForNoDate
 }

@@ -43,32 +43,32 @@
         <h1 id="nav-header">Book your next retreat now</h1>
         <div class="flex">
           <button class="home-button"><span class="material-symbols-rounded">home</span></button>
-        <button id="return-to-login">username<span class="material-icons-round">switch_account</span>
-        </button>
+        <button id="return-to-login">username</button>
         </div>
       </div>
-    <div class="flex">
-        <form class="flex dash-element nav-info select-date-form hidden">
-          <label for="date-selector">Select date:</label>
-          <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
-          <button id="view-available-rooms">choose a room</button>
-        </form>
-        <div class="flex nav-info selected-date">
-          <p>date selected:</p>
-          <p id="current-date">Apr 28th, 2023</p>
+        <div class="flex">
+          <form class="flex dash-element nav-info select-date-form hidden">
+            <label for="date-selector">Select date:</label>
+            <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
+            <button id="view-available-rooms">choose a room</button>
+            <p class="error-for-no-date"></p>
+          </form>
+          <div class="flex nav-info selected-date">
+            <p>date selected:</p>
+            <p id="current-date">Apr 28th, 2023</p>
+          </div>
+          <div class="flex nav-info filter-by-type">
+            <select id="room-select">
+                <option value="All">All Types</option>
+                <option value="Residential Suite">Residential Suite</option>
+                <option value="Suite">Suite</option>
+                <option value="Single Room">Single Room</option>
+                <option value="Junior Suite">Junior Suite</option>
+            </select>
+            <button id="filter-button">filter by type</button>
+          </div>
         </div>
-        <div class="flex nav-info filter-by-type">
-          <select id="room-select">
-              <option value="">choose room type</option>
-              <option value="residential">Residential Suite</option>
-              <option value="suite">Suite</option>
-              <option value="single">Single</option>
-              <option value="sunior">Junior</option>
-          </select>
-          <button id="filter-button">filter by type</button>
-        </div>
-      </div>
-    </div>
+</div>
     <img id="nav-logo" alt="Overlook Retreats logo with graphic of sun rising over hills" src="../images/blue-logo.png">
   </nav>
 <!-- DASH -->

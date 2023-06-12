@@ -25,6 +25,7 @@ selectedDateDisplay,
 filterByTypeDisplay,
 loginErrorMessage,
 dateSelector,
+errorBoxForNoDate
 } from './scripts.js'
 
 let user, rooms, bookings, currentDate;
@@ -64,8 +65,7 @@ const showBookingsPage = () => {
     show(navBar)
     show(selectedDateDisplay)
     show(homeButton)
-    //show filter
-    //show bookings-page
+    show(filterByTypeDisplay)
     show(bookingsPage)
 };
 
@@ -117,14 +117,7 @@ const loginToSite = (usernameInput, passwordInput) => {
     }
 };
 
-const showAvailableRooms = (dateSelector) => {
-    //need to update currentDate to the value of the dateSelector.value
-    currentDate = dateSelector.value
-    // console.log(currentDate)
-    //invoke find available rooms function
-    let availableRooms = findAvailableRooms(currentDate, bookings, rooms)
-    console.log(availableRooms)
-    //update HTML to display those changes
+const showAvailableRooms = (rooms) => {
     const checksIfBidet = (boolean) => {
         if(boolean) {
             return `This room has a bidet!`
@@ -132,11 +125,11 @@ const showAvailableRooms = (dateSelector) => {
             return ``
         }
     }
-
-    //update the selected date in nav
+    selectedDateDisplay.innerHTML = `<p>date selected:</p>
+    <p id="current-date">${currentDate}</p>`
 
     bookingsPage.innerHTML = ''
-    availableRooms.forEach(room => {
+    rooms.forEach(room => {
         bookingsPage.innerHTML += `<div class="available-room flex">
         <div class="rm-info">
           <h3 class="room-type">${room.roomType}</h3>
@@ -149,12 +142,37 @@ const showAvailableRooms = (dateSelector) => {
         <button class="book-room-button" id="r${room.number}">Book this room!</button>
       </div>`
     })
-    //show bookings page
-    showBookingsPage()
+}
+
+const showAllAvailableRooms = (dateSelector) => {
+    currentDate = dateSelector.value
+    if (currentDate){
+        let availableRooms = findAvailableRooms(currentDate, bookings, rooms)
+        showAvailableRooms(availableRooms)
+        showBookingsPage()
+    } else {
+        errorBoxForNoDate.innerText = 'Please select a date!'
+    }
+}
+
+const showFilteredRooms = (filterInput) => {
+    //take in filter input
+    //invoke function to make list of filtered rooms from available rooms list
+    let availableRooms = findAvailableRooms(currentDate, bookings, rooms)
+    let filteredAvailableRooms = filterRoomsByType(availableRooms, filterInput.value)
+    //invoke funtion to update html
+    if(filterInput.value === 'Residential Suite' || filterInput.value === 'Suite' || filterInput.value === 'Single Room' || filterInput.value === 'Junior Suite'){
+        showAvailableRooms(filteredAvailableRooms)
+    } else if (filterInput.value === 'All') {
+        showAvailableRooms(availableRooms)
+    } else {
+        bookingsPage.innerHTML = `<p>${filteredAvailableRooms}</p>`
+    }
 }
 
 export {
     showLoginPage,
     loginToSite,
-    showAvailableRooms
+    showAllAvailableRooms,
+    showFilteredRooms
 }
