@@ -144,7 +144,7 @@ const showAvailableRooms = (rooms) => {
             <p class="rm-info-element">${checksIfBidet(room.bidet)}</p>
           </div>
         </div>
-        <button class="book-room-button" id="r${room.number}">Book this room!</button>
+        <button class="book-room-button" id="${room.number}">Book this room!</button>
       </div>`
     });
 }
@@ -174,25 +174,26 @@ const showFilteredRooms = (filterInput) => {
 };
 
 const bookRoom = (event) => {
-    //check the location of the events id
-     
-    //make the object that will be posted
+    console.log(user.id)
+    console.log(currentDate.replaceAll('-','/'))
+    //remove dash - add slash
+    console.log(parseInt(event.target.id))
+    //make above into number
     fetch('http://localhost:3001/api/v1/bookings', {
         method: 'POST',
         body: JSON.stringify({
-          'userID': user.id,
-          'date': currentDate,
-          'roomNumber': event.target.id
+          userID: user.id,
+          date: currentDate.replaceAll('-','/'),
+          roomNumber: parseInt(event.target.id)
         }),
         headers: {
           'Content-Type': 'application/json'
         }
       })
       .then(response => response.json())
-      .then()
+      .then(updatePastBookings(user.id))
       .catch(err => alert(err));
-    //excecute post with get in .then
-    //change message in button to say room booked!(color too if it isn't hard)
+      console.log('click heard')
 };
 
 export {

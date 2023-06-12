@@ -70,7 +70,7 @@ filterByTypeButton.addEventListener('click', () => {
 homeButton.addEventListener('click', showDashPage)
 
 //event listener for booking button
-bookedRoomButton.addEventListener('click', (event) => {
+bookingsPage.addEventListener('click', (event) => {
   bookRoom(event)
 })
 
