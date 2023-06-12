@@ -6,14 +6,24 @@ const checkPassword = (password) => {
     }
 };
 
+// const checkUsername = (username) => {
+//     if(username){
+//        let id = username.split('').splice(8).join('')
+//        return id
+//     } else {
+//         return `Please enter your username`
+//     }
+// };
+
 const checkUsername = (username) => {
-    if(username){
-       let id = username.split('').splice(8).join('')
-       return id
+    let usernameFirst8 = username.split('').splice(0, 8).join('')
+    if (usernameFirst8 === 'customer') {
+        let id = username.split('').splice(8).join('')
+        return id
     } else {
-        return `Please enter your username`
+        return 'Username is incorrect'
     }
-}
+};
 
 const findUserBookings = (user, bookings) => {
     return bookings.filter(booking => booking.userID === user.id)
@@ -25,7 +35,7 @@ const calcTotalBookingsCost = (rooms, userBookings) => {
     .reduce((total, roomNumber) => {
         return total += rooms[roomNumber-1].costPerNight
     },0)
-}
+};
 
 const findAvailableRooms = (date, bookings, rooms) => {
 

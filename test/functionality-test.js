@@ -45,11 +45,6 @@ describe('Username check', function() {
 
         expect(incorrectUsername).to.equal('Username is incorrect')
     });
-    it('Should return a message if no user name is entered', function() {
-        let noUsername = checkUsername()
-
-        expect(noUsername).to.equal('Please enter your username')
-    });
 });
 
 describe(`Find user's bookings`, function() {
