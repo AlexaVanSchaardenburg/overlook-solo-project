@@ -219,6 +219,7 @@ nav{
   font-size: 1.4em;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1em;
 }
 
 .room-type{

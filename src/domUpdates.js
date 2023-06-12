@@ -2,6 +2,7 @@ import {
     checkPassword,
     checkUsername,
     findUserBookings,
+    convertBookingsToRooms,
     calcTotalBookingsCost,
     findAvailableRooms,
     filterRoomsByType
@@ -89,23 +90,35 @@ const loginToSite = (usernameInput, passwordInput) => {
         Promise.all([userResponse, roomsResponse, bookingsResponse]).then(([userData, roomsData, bookingsData]) => {
 
             user = userData
-            rooms = roomsData
+            rooms = roomsData.rooms
             bookings = bookingsData.bookings
 
             //invoke functions to filter user bookings (h)
             let userBookings = findUserBookings(user, bookings)
+            console.log(userBookings)
+            // let usersBookedRooms = convertBookingsToRooms(userBookings, rooms)
             //change innerHTML to display username
-            returnToLoginButton.innerText = user.name
+            returnToLoginButton.innerText = `Log out of user ${user.name}`
             //change innerHTML to show users bookings
+            // console.log(rooms)
+            dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
+            <h2 id="all-bookings">All Bookings</h2>
+            <div class="flex">
+              <p id="total-cost-label">total spent: </p>
+              <p id="total-cost"><span class="material-symbols-rounded">
+                monetization_on
+                </span>1,721.07</p>
+            </div>`
             userBookings.forEach(booking => {
-                bookingsDisplay.innerHTML = ''
-                bookingsDisplay.innerHTML = `<div class="booking-display flex" id="booking-number">
-                <h3 class="room-type">Room Type</h3>
-                <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>Jan 24th, 2023</p>
-                <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>358.40</p>
-              </div>`
+                dashPage.innerHTML += `
+                <div class="booking-display flex" id="booking-number">
+                    <h3 class="room-type">${rooms[booking.roomNumber - 1].roomType}</h3>
+                    <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>${booking.date}</p>
+                    <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>${rooms[booking.roomNumber-1].costPerNight}</p>
+                </div>`
             })
             //then invoke show dash (h)
+            showDashPage()
         })
     } else {
         //change innerHTML to inlcude an error message above login button
