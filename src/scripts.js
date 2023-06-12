@@ -12,6 +12,7 @@ import './images/blue-logo.png'
 import {
   showLoginPage,
   loginToSite,
+  showAvailableRooms
 } from './domUpdates.js'
 
 //API CALLS
@@ -48,8 +49,8 @@ const selectedDateDisplay = document.querySelector('.selected-date');
 const filterByTypeDisplay = document.querySelector('.filter-by-type');
 const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
-const loginErrorMessage = document.querySelector('.login-error-message')
-const bookingsDisplay = document.querySelector('.booking-display')
+const loginErrorMessage = document.querySelector('.login-error-message');
+const dateSelector = document.querySelector('#date-selector');
 
 //EVENT LISTENERS
 
@@ -60,7 +61,10 @@ loginButton.addEventListener('click', (event) => {
 
 returnToLoginButton.addEventListener('click', showLoginPage)
 
-// chooseRoomButton.addEventListener('click', showAvailableRooms)
+chooseRoomButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  showAvailableRooms(dateSelector)
+});
 
 export {
   roomsResponse,
@@ -77,5 +81,5 @@ export {
   selectedDateDisplay,  
   filterByTypeDisplay,
   loginErrorMessage,
-  bookingsDisplay
+  dateSelector
 }

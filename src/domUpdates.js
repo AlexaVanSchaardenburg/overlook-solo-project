@@ -24,10 +24,10 @@ selectDateDisplay,
 selectedDateDisplay,  
 filterByTypeDisplay,
 loginErrorMessage,
-bookingsDisplay
+dateSelector,
 } from './scripts.js'
 
-let user, rooms, bookings;
+let user, rooms, bookings, currentDate;
 
 //FUNCTIONS
 
@@ -64,17 +64,18 @@ const showBookingsPage = () => {
     show(navBar)
     show(selectedDateDisplay)
     show(homeButton)
+    //show filter
+    //show bookings-page
+    show(bookingsPage)
 };
 
 const loginToSite = (usernameInput, passwordInput) => {
-
-
 
     const userID = checkUsername(usernameInput.value)
     const passwordValid = checkPassword(passwordInput.value)
 
     if(passwordValid && !isNaN(userID)){
-        //fetch user info
+
         loginErrorMessage.innerText = ''
         const userResponse = fetch(`http://localhost:3001/api/v1/customers/${userID}`).then((response) => {
             if(!response.ok) {
@@ -83,7 +84,7 @@ const loginToSite = (usernameInput, passwordInput) => {
                 return response.json();
             }
             }).catch(error => alert(`${error.message}`));
-        //promise.all to reassign variables for rooms, bookings, and user
+
         Promise.all([userResponse, roomsResponse, bookingsResponse]).then(([userData, roomsData, bookingsData]) => {
 
             user = userData
@@ -116,11 +117,44 @@ const loginToSite = (usernameInput, passwordInput) => {
     }
 };
 
-const showAvailableRooms = () => {
+const showAvailableRooms = (dateSelector) => {
+    //need to update currentDate to the value of the dateSelector.value
+    currentDate = dateSelector.value
+    // console.log(currentDate)
+    //invoke find available rooms function
+    let availableRooms = findAvailableRooms(currentDate, bookings, rooms)
+    console.log(availableRooms)
+    //update HTML to display those changes
+    const checksIfBidet = (boolean) => {
+        if(boolean) {
+            return `This room has a bidet!`
+        } else {
+            return ``
+        }
+    }
 
+    //update the selected date in nav
+
+    bookingsPage.innerHTML = ''
+    availableRooms.forEach(room => {
+        bookingsPage.innerHTML += `<div class="available-room flex">
+        <div class="rm-info">
+          <h3 class="room-type">${room.roomType}</h3>
+          <div class="sub-info flex">
+            <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>${room.bedSize} x ${room.numBeds}</p>
+            <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>Room Cost</p>
+            <p class="rm-info-element">${checksIfBidet(room.bidet)}</p>
+          </div>
+        </div>
+        <button class="book-room-button" id="r${room.number}">Book this room!</button>
+      </div>`
+    })
+    //show bookings page
+    showBookingsPage()
 }
 
 export {
     showLoginPage,
-    loginToSite
+    loginToSite,
+    showAvailableRooms
 }
