@@ -27,8 +27,6 @@ loginErrorMessage,
 bookingsDisplay
 } from './scripts.js'
 
-//VARIABLES
-
 let user, rooms, bookings;
 
 //FUNCTIONS

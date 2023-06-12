@@ -14,16 +14,7 @@ import {
   loginToSite,
 } from './domUpdates.js'
 
-
-//LOGIN PAGE FUNCTIONALITY
-    /*
-    - checks if first 8 characters of username is customer - return boolean - write into functionality.js
-    - takes ending characters and iterpolates them into fetch call to get back the user
-    - uses checkPassword fucntion to checck password - return boolean
-    - when login button is clicked - IF username and password return true, after fetch resolves, move to dashbaord page - if one is false rturn message that username or password is incorrect
-    */
-
-// //API CALLS
+//API CALLS
 
 const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
   if(!response.ok) {
@@ -61,27 +52,6 @@ const loginErrorMessage = document.querySelector('.login-error-message')
 const bookingsDisplay = document.querySelector('.booking-display')
 
 //EVENT LISTENERS
-
-//   window.addEventListener('load', () => {
-//     Promise.all([roomsResponse, bookingsResponse]).then(([rooms, bookings]) => {
-    
-//     roomsData = rooms.rooms
-//     bookingsData = bookings.bookings
-
-//     //do all this on buttton click for login button
-    
-//     // showRecipesPage();
-//     // user = selectRandomUser(usersData);
-//     // displayAllRecipes(recipeData);
-//     // return user;
-
-//     //maybe here I need to do all the dom updating for the past bookings and rooms data? -no
-//     //need to return the rooms data and the bookings data -no
-//     //to return both, might need to put these in different places? -no
-//     //can reassign all here and then they will be available eventually, only need to do the functionality for what ever needs to be visible ASAP (aka do rooms and bookings on page load and then they will be hpefully be ready by the time we use them on the next pages) -- need to wait on user being assigned 
-//     //I think this will work becuase javascipt will only put invoked functions into the call stack so the functions that need this data will not be in there until after the login button is click - thus this means that we should get back that data before we use it (counting on the user taking a bit of time to put in the user name and password and then clicking the login button)
-//     })});
-
 
 loginButton.addEventListener('click', (event) => {
   event.preventDefault();
