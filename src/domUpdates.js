@@ -174,30 +174,34 @@ const loginToSite = (usernameInput, passwordInput) => {
 };
 
 const showAvailableRooms = (rooms) => {
-    const checksIfBidet = (boolean) => {
-        if(boolean) {
-            return `This room has a bidet!`
-        } else {
-            return ``
-        };
-    };
-    selectedDateDisplay.innerHTML = `<p>date selected:</p>
-    <p id="current-date">${currentDate}</p>`;
-
     bookingsPage.innerHTML = ''
-    rooms.forEach(room => {
-        bookingsPage.innerHTML += `<div class="available-room flex">
-        <div class="rm-info">
-          <h3 class="room-type">${room.roomType}</h3>
-          <div class="sub-info flex">
-            <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>${room.bedSize} x ${room.numBeds}</p>
-            <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>${room.costPerNight}</p>
-            <p class="rm-info-element">${checksIfBidet(room.bidet)}</p>
-          </div>
-        </div>
-        <button class="book-room-button" id="${room.number}">Book this room!</button>
-      </div>`
-    });
+    if(rooms.length > 0){
+        const checksIfBidet = (boolean) => {
+            if(boolean) {
+                return `This room has a bidet!`
+            } else {
+                return ``
+            };
+        };
+        selectedDateDisplay.innerHTML = `<p>date selected:</p>
+        <p id="current-date">${currentDate}</p>`;
+    
+        rooms.forEach(room => {
+            bookingsPage.innerHTML += `<div class="available-room flex">
+            <div class="rm-info">
+              <h3 class="room-type">${room.roomType}</h3>
+              <div class="sub-info flex">
+                <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>${room.bedSize} x ${room.numBeds}</p>
+                <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>${room.costPerNight}</p>
+                <p class="rm-info-element">${checksIfBidet(room.bidet)}</p>
+              </div>
+            </div>
+            <button class="book-room-button" id="${room.number}">Book this room!</button>
+          </div>`
+        });
+    } else {
+        bookingsPage.innerHTML = "I am so sorry! There are no rooms available on this date, please select a different date!"
+    }
 };
 
 const showAllAvailableRooms = (dateSelector) => {
