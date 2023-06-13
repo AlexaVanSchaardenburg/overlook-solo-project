@@ -311,6 +311,7 @@ const showFilteredRooms = (filterInput) => {
 
 const bookRoom = (event) => {
     postBookings(event.target.id)
+    event.target.innerText = 'Booking complete!'
 };
 
 
