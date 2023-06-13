@@ -69,7 +69,7 @@ const showBookingsPage = () => {
     show(bookingsPage);
 };
 
-const updatePastBookings = (userID) => {
+const displayPastBookings = (userID) => {
 
     loginErrorMessage.innerText = ''
     const userResponse = fetch(`http://localhost:3001/api/v1/customers/${userID}`).then((response) => {
@@ -115,7 +115,7 @@ const loginToSite = (usernameInput, passwordInput) => {
     const passwordValid = checkPassword(passwordInput.value);
 
     if(passwordValid && !isNaN(userID)){
-        updatePastBookings(userID)
+        displayPastBookings(userID)
         showDashPage()
     } else {
         loginErrorMessage.innerText = 'Username or password is incorrect'
@@ -140,7 +140,7 @@ const showAvailableRooms = (rooms) => {
           <h3 class="room-type">${room.roomType}</h3>
           <div class="sub-info flex">
             <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>${room.bedSize} x ${room.numBeds}</p>
-            <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>Room Cost</p>
+            <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>Room Cost${room.costPerNight}</p>
             <p class="rm-info-element">${checksIfBidet(room.bidet)}</p>
           </div>
         </div>
@@ -174,11 +174,6 @@ const showFilteredRooms = (filterInput) => {
 };
 
 const bookRoom = (event) => {
-    console.log(user.id)
-    console.log(currentDate.replaceAll('-','/'))
-    //remove dash - add slash
-    console.log(parseInt(event.target.id))
-    //make above into number
     fetch('http://localhost:3001/api/v1/bookings', {
         method: 'POST',
         body: JSON.stringify({
@@ -191,10 +186,21 @@ const bookRoom = (event) => {
         }
       })
       .then(response => response.json())
-      .then(updatePastBookings(user.id))
+      .then(() => {
+        updateBookings(event)
+      })
       .catch(err => alert(err));
-      console.log('click heard')
 };
+
+const updateBookings = (event) => {
+    fetch('http://localhost:3001/api/v1/bookings')
+    .then(response => response.json())
+    .then(bookingsData => {
+      bookings = bookingsData.bookings
+      event.target.innerText = 'Booking complete!'
+      return bookings
+    })
+}
 
 export {
     showLoginPage,
@@ -202,5 +208,6 @@ export {
     loginToSite,
     showAllAvailableRooms,
     showFilteredRooms,
-    bookRoom
+    bookRoom,
+    user
 }

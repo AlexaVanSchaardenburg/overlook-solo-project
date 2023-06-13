@@ -9,7 +9,8 @@ import {
   showAllAvailableRooms,
   showFilteredRooms,
   showDashPage,
-  bookRoom
+  bookRoom,
+  user
 } from './domUpdates.js'
 
 //API CALLS
