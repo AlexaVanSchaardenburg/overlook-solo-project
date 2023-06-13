@@ -1,21 +1,19 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// CSS import
+// IMPORTS
 import './css/styles.css';
-
-// Image imports
 import './images/login-img.jpg'
 import './images/logo-grey.png'
 import './images/blue-logo.png'
-
 import {
   showLoginPage,
   loginToSite,
+  showAllAvailableRooms,
+  showFilteredRooms,
+  showDashPage,
+  bookRoom,
+  user
 } from './domUpdates.js'
 
 //API CALLS
-
 const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
   if(!response.ok) {
     throw new Error(`${response.status}`)
@@ -33,7 +31,6 @@ const bookingsResponse = fetch('http://localhost:3001/api/v1/bookings').then((re
   }).catch(error => alert(`${error.message}`));
 
 //QUERY SELECTORS
-
 const loginButton = document.querySelector('#login-button');
 const homeButton = document.querySelector('.home-button');
 const returnToLoginButton = document.querySelector('#return-to-login');
@@ -48,11 +45,13 @@ const selectedDateDisplay = document.querySelector('.selected-date');
 const filterByTypeDisplay = document.querySelector('.filter-by-type');
 const usernameInput = document.querySelector('#username-input');
 const passwordInput = document.querySelector('#password-input');
-const loginErrorMessage = document.querySelector('.login-error-message')
-const bookingsDisplay = document.querySelector('.booking-display')
+const loginErrorMessage = document.querySelector('.login-error-message');
+const dateSelector = document.querySelector('#date-selector');
+const errorBoxForNoDate = document.querySelector('.error-for-no-date');
+const filterInput = document.querySelector('#room-select');
+const bookedRoomButton = document.querySelector('.book-room-button')
 
 //EVENT LISTENERS
-
 loginButton.addEventListener('click', (event) => {
   event.preventDefault();
   loginToSite(usernameInput, passwordInput)
@@ -60,7 +59,21 @@ loginButton.addEventListener('click', (event) => {
 
 returnToLoginButton.addEventListener('click', showLoginPage)
 
-// chooseRoomButton.addEventListener('click', showAvailableRooms)
+chooseRoomButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  showAllAvailableRooms(dateSelector)
+});
+
+filterByTypeButton.addEventListener('click', () => {
+  showFilteredRooms(filterInput)
+})
+
+homeButton.addEventListener('click', showDashPage)
+
+//event listener for booking button
+bookingsPage.addEventListener('click', (event) => {
+  bookRoom(event)
+})
 
 export {
   roomsResponse,
@@ -77,5 +90,6 @@ export {
   selectedDateDisplay,  
   filterByTypeDisplay,
   loginErrorMessage,
-  bookingsDisplay
+  dateSelector,
+  errorBoxForNoDate
 }

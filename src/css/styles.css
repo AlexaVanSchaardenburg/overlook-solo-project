@@ -270,6 +270,14 @@ nav{
   width: 5em;
 }
 
+.book-room-button{
+  background: #FDD35D;
+  color: white;
+  font-family: 'Oleo Script Swash Caps';
+  font-size: 1.2em;
+  width: 5em;
+}
+
 /* --------------------- */
 
 .hidden{
