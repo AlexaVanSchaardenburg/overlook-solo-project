@@ -139,7 +139,7 @@ const displayBookings = (user, rooms, bookings) => {
         <h2 id="all-bookings">All Bookings</h2>
         <div class="flex">
             <p id="total-cost-label">total spent: </p>
-            <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost}</p>
+            <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost.toFixed(2)}</p>
         </div>`;
 
     userBookings.forEach(booking => {
