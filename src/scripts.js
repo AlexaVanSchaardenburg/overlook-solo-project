@@ -13,21 +13,43 @@ import {
 } from './domUpdates.js'
 
 //API CALLS
-const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
-  if(!response.ok) {
-    throw new Error(`${response.status}`)
-  } else {
-    return response.json();
-  }
-}).catch(error => alert(`${error.message}`));
+// const getRooms = () => {
+//   return fetch('http://localhost:3001/api/v1/rooms').then((response) => {
+//     if(!response.ok) {
+//       throw new Error(`${response.status}`)
+//     } else {
+//       return response.json();
+//     }
+//   }).catch(error => alert(`${error.message}`));
+// };
 
-const bookingsResponse = fetch('http://localhost:3001/api/v1/bookings').then((response) => {
-    if(!response.ok) {
-      throw new Error(`${response.status}`)
-    } else {
-      return response.json();
-    }
-  }).catch(error => alert(`${error.message}`));
+// const getBookings = () => {
+//   return fetch('http://localhost:3001/api/v1/bookings').then((response) => {
+//     if(!response.ok) {
+//       throw new Error(`${response.status}`)
+//     } else {
+//       return response.json();
+//     }
+//   }).catch(error => alert(`${error.message}`));
+// };
+
+
+
+// const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
+//   if(!response.ok) {
+//     throw new Error(`${response.status}`)
+//   } else {
+//     return response.json();
+//   }
+// }).catch(error => alert(`${error.message}`));
+
+// const bookingsResponse = fetch('http://localhost:3001/api/v1/bookings').then((response) => {
+//     if(!response.ok) {
+//       throw new Error(`${response.status}`)
+//     } else {
+//       return response.json();
+//     }
+//   }).catch(error => alert(`${error.message}`));
 
 //QUERY SELECTORS
 const bookingsPage = document.querySelector('#make-booking-page')
@@ -74,7 +96,7 @@ bookingsPage.addEventListener('click', (event) => {
 
 export {
   bookingsPage,
-  bookingsResponse,
+  // bookingsResponse,
   dashPage,
   errorBoxForNoDate,
   filterByTypeDisplay,
@@ -83,7 +105,12 @@ export {
   loginPage,
   navBar,
   returnToLoginButton,
-  roomsResponse,
+  // roomsResponse,
   selectDateDisplay,
-  selectedDateDisplay
+  selectedDateDisplay,
+
+
+
+  // getBookings,
+  // getRooms,
 }
