@@ -1,9 +1,8 @@
-/* font-family: 'Alumni Sans', sans-serif;
-font-family: 'Oleo Script Swash Caps', cursive; */
 *{
   padding: 0;
   margin: 0;
   font-family: 'Alumni Sans';
+  font-size: 20px
 }
 
 body {
@@ -42,7 +41,6 @@ button{
     padding: 0.5em;
     font-weight: lighter;
 }
-
 
 /* LOGIN PAGE */
 
@@ -93,7 +91,6 @@ button{
   color: #2C2C54;
 }
 
-
 /* NAV */
 
 nav{
@@ -137,39 +134,44 @@ nav{
 }
 
 .nav-info{
-  background: white;
+  background: #2C2C54;
+  color: white;
   border-radius: 1.5em;
   padding: 0.5em;
   align-items: center;
   justify-content: space-around;
-  margin-left: 0.6em
+  margin-left: 0.6em;
+  width:15em;
+}
+
+.select-date-form{
+  width: 25em;
 }
 
 #date-selector{
-  background: #2C2C54;
-  color: white;
+  background: white;
+  color: #2C2C54;
   padding: 0.5em;
 }
 
 #view-available-rooms{
-  background: #2C2C54;
-  color: white;
+  background: white;
+  color: #2C2C54;
 }
 
 #current-date{
-  background: #2C2C54;
-  color: white;
+  background: white;
+  color: #2C2C54;
   border-radius: 1em;
   padding: 0.3em
 }
 
 #filter-button{
-  background: #2C2C54;
-  color: white;
+  background: white;
+  color: #2C2C54;
   border-radius: 1em;
   padding: 0.3em
 }
-
 
 /* MAIN PAGE */
 
@@ -236,7 +238,6 @@ nav{
 .booking-cost{
   margin-right: 2em;
 }
-
 
 /* MAKE BOOKING PAGE */
 

@@ -9,7 +9,6 @@ import {
 
 import {
     bookingsPage,
-    // bookingsResponse,
     dashPage,
     errorBoxForNoDate,
     filterByTypeDisplay,
@@ -18,17 +17,11 @@ import {
     loginPage,
     navBar,
     returnToLoginButton,
-    // roomsResponse,
     selectDateDisplay,
     selectedDateDisplay,
-
-
-
-
-    // getBookings,
-    // getRooms,
-
 } from './scripts.js'
+
+//VARIABLES
 
 let user, rooms, bookings, currentDate;
 
@@ -79,17 +72,12 @@ const getRooms = () => {
       .then(response => response.json())
       .then(() => getBookings())
       .then(bookingsResponse => {
-        console.log(bookingsResponse)
         bookings = bookingsResponse.bookings
     }).then(() => {
         displayBookings(user, rooms, bookings)
     })
-    //   .then(res => console.log('res:', res))
-    //   .then(() => displayBookings(user, rooms, bookings))
       .catch(err => alert(err));
 };
-
-
 
 //FUNCTIONS
 
@@ -136,13 +124,13 @@ const displayBookings = (user, rooms, bookings) => {
     let userBookingsCost = calcTotalBookingsCost(rooms, userBookings);
 
     dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
-        <h2 id="all-bookings">All Bookings</h2>
+        <h2 id="all-bookings">Past Bookings</h2>
         <div class="flex">
             <p id="total-cost-label">total spent: </p>
             <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost.toFixed(2)}</p>
         </div>`;
 
-    userBookings.forEach(booking => {
+    userBookings.reverse().forEach(booking => {
         dashPage.innerHTML += `
         <div class="booking-display flex" id="booking-number">
             <h3 class="room-type">${rooms[booking.roomNumber - 1].roomType}</h3>
@@ -152,14 +140,7 @@ const displayBookings = (user, rooms, bookings) => {
     })
 };
 
-
-
-
-
-
-
-
-const displayPastBookings = (userID) => {
+const resolveFetchedData = (userID) => {
 
     let bookingsResponse = getBookings()
     let roomsResponse = getRooms()
@@ -173,27 +154,11 @@ const displayPastBookings = (userID) => {
         rooms = roomsData.rooms;
         bookings = bookingsData.bookings;
 
-        returnToLoginButton.innerText = `Log out of user ${user.name}`;
+        returnToLoginButton.innerHTML = `Log out of user ${user.name}`;
 
         displayBookings(user, rooms, bookings)
     })
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const loginToSite = (usernameInput, passwordInput) => {
 
@@ -201,25 +166,12 @@ const loginToSite = (usernameInput, passwordInput) => {
     const passwordValid = checkPassword(passwordInput.value);
 
     if(passwordValid && !isNaN(userID)){
-        displayPastBookings(userID)
+        resolveFetchedData(userID)
         showDashPage()
     } else {
         loginErrorMessage.innerText = 'Username or password is incorrect'
     };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const showAvailableRooms = (rooms) => {
     const checksIfBidet = (boolean) => {
@@ -248,18 +200,6 @@ const showAvailableRooms = (rooms) => {
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
 const showAllAvailableRooms = (dateSelector) => {
     currentDate = dateSelector.value;
     if (currentDate){
@@ -270,20 +210,6 @@ const showAllAvailableRooms = (dateSelector) => {
         errorBoxForNoDate.innerText = 'Please select a date!'
     };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const showFilteredRooms = (filterInput) => {
     let availableRooms = findAvailableRooms(currentDate, bookings, rooms);
@@ -298,33 +224,12 @@ const showFilteredRooms = (filterInput) => {
     };
 };
 
-
-
-
-
-
-
-
-
-
-
-
 const bookRoom = (event) => {
-    postBookings(event.target.id)
-    event.target.innerText = 'Booking complete!'
+    if (event.target instanceof HTMLButtonElement){
+        postBookings(event.target.id)
+        event.target.innerText = 'Booking complete!'
+    }
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 export {
     bookRoom,

@@ -1,4 +1,3 @@
-// IMPORTS
 import './css/styles.css';
 import './images/login-img.jpg'
 import './images/logo-grey.png'
@@ -12,66 +11,25 @@ import {
   showLoginPage
 } from './domUpdates.js'
 
-//API CALLS
-// const getRooms = () => {
-//   return fetch('http://localhost:3001/api/v1/rooms').then((response) => {
-//     if(!response.ok) {
-//       throw new Error(`${response.status}`)
-//     } else {
-//       return response.json();
-//     }
-//   }).catch(error => alert(`${error.message}`));
-// };
+const bookingsPage = document.querySelector('#make-booking-page');
+const chooseRoomButton = document.querySelector('#view-available-rooms');
+const dashPage = document.querySelector('.dashboard');
+const dateSelector = document.querySelector('#date-selector');
+const errorBoxForNoDate = document.querySelector('.error-for-no-date');
+const filterByTypeButton = document.querySelector('#filter-button');
+const filterByTypeDisplay = document.querySelector('.filter-by-type');
+const filterInput = document.querySelector('#room-select');
+const homeButton = document.querySelector('.home-button');
+const loginButton = document.querySelector('#login-button');
+const loginErrorMessage = document.querySelector('.login-error-message');
+const loginPage = document.querySelector('#login-page');
+const navBar = document.querySelector('#nav-bar');
+const passwordInput = document.querySelector('#password-input');
+const returnToLoginButton = document.querySelector('#return-to-login');
+const selectDateDisplay = document.querySelector('.select-date-form');
+const selectedDateDisplay = document.querySelector('.selected-date');
+const usernameInput = document.querySelector('#username-input');
 
-// const getBookings = () => {
-//   return fetch('http://localhost:3001/api/v1/bookings').then((response) => {
-//     if(!response.ok) {
-//       throw new Error(`${response.status}`)
-//     } else {
-//       return response.json();
-//     }
-//   }).catch(error => alert(`${error.message}`));
-// };
-
-
-
-// const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
-//   if(!response.ok) {
-//     throw new Error(`${response.status}`)
-//   } else {
-//     return response.json();
-//   }
-// }).catch(error => alert(`${error.message}`));
-
-// const bookingsResponse = fetch('http://localhost:3001/api/v1/bookings').then((response) => {
-//     if(!response.ok) {
-//       throw new Error(`${response.status}`)
-//     } else {
-//       return response.json();
-//     }
-//   }).catch(error => alert(`${error.message}`));
-
-//QUERY SELECTORS
-const bookingsPage = document.querySelector('#make-booking-page')
-const chooseRoomButton = document.querySelector('#view-available-rooms')
-const dashPage = document.querySelector('.dashboard')
-const dateSelector = document.querySelector('#date-selector')
-const errorBoxForNoDate = document.querySelector('.error-for-no-date')
-const filterByTypeButton = document.querySelector('#filter-button')
-const filterByTypeDisplay = document.querySelector('.filter-by-type')
-const filterInput = document.querySelector('#room-select')
-const homeButton = document.querySelector('.home-button')
-const loginButton = document.querySelector('#login-button')
-const loginErrorMessage = document.querySelector('.login-error-message')
-const loginPage = document.querySelector('#login-page')
-const navBar = document.querySelector('#nav-bar')
-const passwordInput = document.querySelector('#password-input')
-const returnToLoginButton = document.querySelector('#return-to-login')
-const selectDateDisplay = document.querySelector('.select-date-form')
-const selectedDateDisplay = document.querySelector('.selected-date')
-const usernameInput = document.querySelector('#username-input')
-
-//EVENT LISTENERS
 loginButton.addEventListener('click', (event) => {
   event.preventDefault();
   loginToSite(usernameInput, passwordInput)
@@ -96,7 +54,6 @@ bookingsPage.addEventListener('click', (event) => {
 
 export {
   bookingsPage,
-  // bookingsResponse,
   dashPage,
   errorBoxForNoDate,
   filterByTypeDisplay,
@@ -105,12 +62,6 @@ export {
   loginPage,
   navBar,
   returnToLoginButton,
-  // roomsResponse,
   selectDateDisplay,
-  selectedDateDisplay,
-
-
-
-  // getBookings,
-  // getRooms,
+  selectedDateDisplay
 }
