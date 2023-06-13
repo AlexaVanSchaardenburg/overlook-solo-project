@@ -9,6 +9,7 @@ import {
 
 import {
     bookingsPage,
+    bookRoomButton,
     dashPage,
     errorBoxForNoDate,
     filterByTypeDisplay,
@@ -224,8 +225,10 @@ const showFilteredRooms = (filterInput) => {
 };
 
 const bookRoom = (event) => {
-    postBookings(event.target.id)
-    event.target.innerText = 'Booking complete!'
+    if (event.target instanceof HTMLButtonElement){
+        postBookings(event.target.id)
+        event.target.innerText = 'Booking complete!'
+    }
 };
 
 export {
