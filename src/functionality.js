@@ -24,13 +24,6 @@ const findUserBookings = (user, bookings) => {
     return bookings.filter(booking => booking.userID === user.id)
 }
 
-//UNUSED FUNCTION - IF YOU USE IT UNCOMMENT THE TEST!!!!!!
-
-// const convertBookingsToRooms = (userBookings, rooms) => {
-//     //iterate through bookings array and find the room number, for each room number map the approrpiate room into a new array
-//     return userBookings.map(booking => rooms[booking.roomNumber - 1])
-// }
-
 const calcTotalBookingsCost = (rooms, userBookings) => {
     return userBookings
     .map(booking => booking.roomNumber)
@@ -62,10 +55,10 @@ const filterRoomsByType = (availableRooms, type) => {
 }};
 
 export {
+    calcTotalBookingsCost,
     checkPassword,
     checkUsername,
-    findUserBookings,
-    calcTotalBookingsCost,
+    filterRoomsByType,
     findAvailableRooms,
-    filterRoomsByType
+    findUserBookings
 }

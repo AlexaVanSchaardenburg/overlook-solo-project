@@ -4,13 +4,12 @@ import './images/login-img.jpg'
 import './images/logo-grey.png'
 import './images/blue-logo.png'
 import {
-  showLoginPage,
+  bookRoom,
   loginToSite,
   showAllAvailableRooms,
-  showFilteredRooms,
   showDashPage,
-  bookRoom,
-  user
+  showFilteredRooms,
+  showLoginPage
 } from './domUpdates.js'
 
 //API CALLS
@@ -31,25 +30,24 @@ const bookingsResponse = fetch('http://localhost:3001/api/v1/bookings').then((re
   }).catch(error => alert(`${error.message}`));
 
 //QUERY SELECTORS
-const loginButton = document.querySelector('#login-button');
-const homeButton = document.querySelector('.home-button');
-const returnToLoginButton = document.querySelector('#return-to-login');
-const chooseRoomButton = document.querySelector('#view-available-rooms');
-const filterByTypeButton = document.querySelector('#filter-button'); 
-const navBar = document.querySelector('#nav-bar');
-const dashPage = document.querySelector('.dashboard');
-const bookingsPage = document.querySelector('#make-booking-page') 
-const loginPage = document.querySelector('#login-page');
-const selectDateDisplay = document.querySelector('.select-date-form');
-const selectedDateDisplay = document.querySelector('.selected-date');
-const filterByTypeDisplay = document.querySelector('.filter-by-type');
-const usernameInput = document.querySelector('#username-input');
-const passwordInput = document.querySelector('#password-input');
-const loginErrorMessage = document.querySelector('.login-error-message');
-const dateSelector = document.querySelector('#date-selector');
-const errorBoxForNoDate = document.querySelector('.error-for-no-date');
-const filterInput = document.querySelector('#room-select');
-const bookedRoomButton = document.querySelector('.book-room-button')
+const bookingsPage = document.querySelector('#make-booking-page')
+const chooseRoomButton = document.querySelector('#view-available-rooms')
+const dashPage = document.querySelector('.dashboard')
+const dateSelector = document.querySelector('#date-selector')
+const errorBoxForNoDate = document.querySelector('.error-for-no-date')
+const filterByTypeButton = document.querySelector('#filter-button')
+const filterByTypeDisplay = document.querySelector('.filter-by-type')
+const filterInput = document.querySelector('#room-select')
+const homeButton = document.querySelector('.home-button')
+const loginButton = document.querySelector('#login-button')
+const loginErrorMessage = document.querySelector('.login-error-message')
+const loginPage = document.querySelector('#login-page')
+const navBar = document.querySelector('#nav-bar')
+const passwordInput = document.querySelector('#password-input')
+const returnToLoginButton = document.querySelector('#return-to-login')
+const selectDateDisplay = document.querySelector('.select-date-form')
+const selectedDateDisplay = document.querySelector('.selected-date')
+const usernameInput = document.querySelector('#username-input')
 
 //EVENT LISTENERS
 loginButton.addEventListener('click', (event) => {
@@ -70,26 +68,22 @@ filterByTypeButton.addEventListener('click', () => {
 
 homeButton.addEventListener('click', showDashPage)
 
-//event listener for booking button
 bookingsPage.addEventListener('click', (event) => {
   bookRoom(event)
 })
 
 export {
-  roomsResponse,
+  bookingsPage,
   bookingsResponse,
-  homeButton,
-  returnToLoginButton,    
-  chooseRoomButton,    
-  filterByTypeButton,    
-  navBar,    
-  dashPage,    
-  bookingsPage,   
-  loginPage,   
-  selectDateDisplay,    
-  selectedDateDisplay,  
+  dashPage,
+  errorBoxForNoDate,
   filterByTypeDisplay,
+  homeButton,
   loginErrorMessage,
-  dateSelector,
-  errorBoxForNoDate
+  loginPage,
+  navBar,
+  returnToLoginButton,
+  roomsResponse,
+  selectDateDisplay,
+  selectedDateDisplay
 }

@@ -8,24 +8,20 @@ import {
 } from './functionality.js'
 
 import {
-//APIs
-roomsResponse,
-bookingsResponse,
-//query selected
-homeButton,
-returnToLoginButton,    
-chooseRoomButton,    
-filterByTypeButton,    
-navBar,    
-dashPage,    
-bookingsPage,   
-loginPage,   
-selectDateDisplay,    
-selectedDateDisplay,  
-filterByTypeDisplay,
-loginErrorMessage,
-dateSelector,
-errorBoxForNoDate
+    bookingsPage,
+    bookingsResponse,
+    dashPage,
+    errorBoxForNoDate,
+    filterByTypeDisplay,
+    homeButton,
+    loginErrorMessage,
+    loginPage,
+    navBar,
+    returnToLoginButton,
+    roomsResponse,
+    selectDateDisplay,
+    selectedDateDisplay
+
 } from './scripts.js'
 
 let user, rooms, bookings, currentDate;
@@ -140,7 +136,7 @@ const showAvailableRooms = (rooms) => {
           <h3 class="room-type">${room.roomType}</h3>
           <div class="sub-info flex">
             <p class="rm-info-element"><span class="material-symbols-rounded">king_bed</span>${room.bedSize} x ${room.numBeds}</p>
-            <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>Room Cost${room.costPerNight}</p>
+            <p class="rm-info-element"><span class="material-symbols-rounded">monetization_on</span>${room.costPerNight}</p>
             <p class="rm-info-element">${checksIfBidet(room.bidet)}</p>
           </div>
         </div>
@@ -203,11 +199,10 @@ const updateBookings = (event) => {
 }
 
 export {
-    showLoginPage,
-    showDashPage,
+    bookRoom,
     loginToSite,
     showAllAvailableRooms,
+    showDashPage,
     showFilteredRooms,
-    bookRoom,
-    user
+    showLoginPage
 }
