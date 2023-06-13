@@ -9,7 +9,6 @@ import {
 
 import {
     bookingsPage,
-    // bookingsResponse,
     dashPage,
     errorBoxForNoDate,
     filterByTypeDisplay,
@@ -18,16 +17,8 @@ import {
     loginPage,
     navBar,
     returnToLoginButton,
-    // roomsResponse,
     selectDateDisplay,
     selectedDateDisplay,
-
-
-
-
-    // getBookings,
-    // getRooms,
-
 } from './scripts.js'
 
 let user, rooms, bookings, currentDate;
@@ -84,12 +75,8 @@ const getRooms = () => {
     }).then(() => {
         displayBookings(user, rooms, bookings)
     })
-    //   .then(res => console.log('res:', res))
-    //   .then(() => displayBookings(user, rooms, bookings))
       .catch(err => alert(err));
 };
-
-
 
 //FUNCTIONS
 
@@ -152,13 +139,6 @@ const displayBookings = (user, rooms, bookings) => {
     })
 };
 
-
-
-
-
-
-
-
 const displayPastBookings = (userID) => {
 
     let bookingsResponse = getBookings()
@@ -179,22 +159,6 @@ const displayPastBookings = (userID) => {
     })
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const loginToSite = (usernameInput, passwordInput) => {
 
     const userID = checkUsername(usernameInput.value);
@@ -207,19 +171,6 @@ const loginToSite = (usernameInput, passwordInput) => {
         loginErrorMessage.innerText = 'Username or password is incorrect'
     };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const showAvailableRooms = (rooms) => {
     const checksIfBidet = (boolean) => {
@@ -248,18 +199,6 @@ const showAvailableRooms = (rooms) => {
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
 const showAllAvailableRooms = (dateSelector) => {
     currentDate = dateSelector.value;
     if (currentDate){
@@ -270,20 +209,6 @@ const showAllAvailableRooms = (dateSelector) => {
         errorBoxForNoDate.innerText = 'Please select a date!'
     };
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const showFilteredRooms = (filterInput) => {
     let availableRooms = findAvailableRooms(currentDate, bookings, rooms);
@@ -298,33 +223,10 @@ const showFilteredRooms = (filterInput) => {
     };
 };
 
-
-
-
-
-
-
-
-
-
-
-
 const bookRoom = (event) => {
     postBookings(event.target.id)
     event.target.innerText = 'Booking complete!'
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 export {
     bookRoom,
