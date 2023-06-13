@@ -65,6 +65,30 @@ const showBookingsPage = () => {
     show(bookingsPage);
 };
 
+const displayBookings = (user, rooms, bookings) => {
+
+    let userBookings = findUserBookings(user, bookings);
+    let userBookingsCost = calcTotalBookingsCost(rooms, userBookings);
+
+    returnToLoginButton.innerText = `Log out of user ${user.name}`;
+
+    dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
+        <h2 id="all-bookings">All Bookings</h2>
+        <div class="flex">
+            <p id="total-cost-label">total spent: </p>
+            <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost}</p>
+        </div>`;
+
+    userBookings.forEach(booking => {
+        dashPage.innerHTML += `
+        <div class="booking-display flex" id="booking-number">
+            <h3 class="room-type">${rooms[booking.roomNumber - 1].roomType}</h3>
+            <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>${booking.date}</p>
+            <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>${rooms[booking.roomNumber-1].costPerNight}</p>
+        </div>`;
+    })
+}
+
 const displayPastBookings = (userID) => {
 
     loginErrorMessage.innerText = ''
@@ -82,26 +106,7 @@ const displayPastBookings = (userID) => {
         rooms = roomsData.rooms;
         bookings = bookingsData.bookings;
 
-        let userBookings = findUserBookings(user, bookings);
-        let userBookingsCost = calcTotalBookingsCost(rooms, userBookings);
-
-        returnToLoginButton.innerText = `Log out of user ${user.name}`;
-
-        dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
-            <h2 id="all-bookings">All Bookings</h2>
-            <div class="flex">
-                <p id="total-cost-label">total spent: </p>
-                <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost}</p>
-            </div>`;
-
-        userBookings.forEach(booking => {
-            dashPage.innerHTML += `
-            <div class="booking-display flex" id="booking-number">
-                <h3 class="room-type">${rooms[booking.roomNumber - 1].roomType}</h3>
-                <p class="booking-date"><span class="material-symbols-rounded">calendar_month</span>${booking.date}</p>
-                <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>${rooms[booking.roomNumber-1].costPerNight}</p>
-            </div>`;
-        })
+        displayBookings(user, rooms, bookings)
     })
 }
 

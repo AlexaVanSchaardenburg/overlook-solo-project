@@ -13,6 +13,11 @@ import {
 } from './domUpdates.js'
 
 //API CALLS
+const getRooms = () => {
+
+}
+
+
 const roomsResponse = fetch('http://localhost:3001/api/v1/rooms').then((response) => {
   if(!response.ok) {
     throw new Error(`${response.status}`)
