@@ -140,7 +140,7 @@ const displayBookings = (user, rooms, bookings) => {
     })
 };
 
-const displayPastBookings = (userID) => {
+const resolveFetchedData = (userID) => {
 
     let bookingsResponse = getBookings()
     let roomsResponse = getRooms()
@@ -166,7 +166,7 @@ const loginToSite = (usernameInput, passwordInput) => {
     const passwordValid = checkPassword(passwordInput.value);
 
     if(passwordValid && !isNaN(userID)){
-        displayPastBookings(userID)
+        resolveFetchedData(userID)
         showDashPage()
     } else {
         loginErrorMessage.innerText = 'Username or password is incorrect'
