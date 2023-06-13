@@ -1,5 +1,3 @@
-/* font-family: 'Alumni Sans', sans-serif;
-font-family: 'Oleo Script Swash Caps', cursive; */
 *{
   padding: 0;
   margin: 0;
@@ -43,7 +41,6 @@ button{
     padding: 0.5em;
     font-weight: lighter;
 }
-
 
 /* LOGIN PAGE */
 
@@ -93,7 +90,6 @@ button{
   margin-top: 0.5em;
   color: #2C2C54;
 }
-
 
 /* NAV */
 
@@ -177,7 +173,6 @@ nav{
   padding: 0.3em
 }
 
-
 /* MAIN PAGE */
 
 .dashboard{
@@ -243,7 +238,6 @@ nav{
 .booking-cost{
   margin-right: 2em;
 }
-
 
 /* MAKE BOOKING PAGE */
 

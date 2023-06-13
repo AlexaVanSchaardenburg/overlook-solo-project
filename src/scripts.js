@@ -1,4 +1,3 @@
-// IMPORTS
 import './css/styles.css';
 import './images/login-img.jpg'
 import './images/logo-grey.png'
@@ -12,9 +11,7 @@ import {
   showLoginPage
 } from './domUpdates.js'
 
-//QUERY SELECTORS
 const bookingsPage = document.querySelector('#make-booking-page');
-const bookRoomButton = document.querySelector('.book-room-button');
 const chooseRoomButton = document.querySelector('#view-available-rooms');
 const dashPage = document.querySelector('.dashboard');
 const dateSelector = document.querySelector('#date-selector');
@@ -33,7 +30,6 @@ const selectDateDisplay = document.querySelector('.select-date-form');
 const selectedDateDisplay = document.querySelector('.selected-date');
 const usernameInput = document.querySelector('#username-input');
 
-//EVENT LISTENERS
 loginButton.addEventListener('click', (event) => {
   event.preventDefault();
   loginToSite(usernameInput, passwordInput)
@@ -58,7 +54,6 @@ bookingsPage.addEventListener('click', (event) => {
 
 export {
   bookingsPage,
-  bookRoomButton,
   dashPage,
   errorBoxForNoDate,
   filterByTypeDisplay,

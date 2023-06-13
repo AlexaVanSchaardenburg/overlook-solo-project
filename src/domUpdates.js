@@ -9,7 +9,6 @@ import {
 
 import {
     bookingsPage,
-    bookRoomButton,
     dashPage,
     errorBoxForNoDate,
     filterByTypeDisplay,
@@ -21,6 +20,8 @@ import {
     selectDateDisplay,
     selectedDateDisplay,
 } from './scripts.js'
+
+//VARIABLES
 
 let user, rooms, bookings, currentDate;
 
@@ -71,7 +72,6 @@ const getRooms = () => {
       .then(response => response.json())
       .then(() => getBookings())
       .then(bookingsResponse => {
-        console.log(bookingsResponse)
         bookings = bookingsResponse.bookings
     }).then(() => {
         displayBookings(user, rooms, bookings)
