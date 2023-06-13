@@ -129,7 +129,7 @@ const displayBookings = (user, rooms, bookings) => {
             <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost.toFixed(2)}</p>
         </div>`;
 
-    userBookings.forEach(booking => {
+    userBookings.reverse().forEach(booking => {
         dashPage.innerHTML += `
         <div class="booking-display flex" id="booking-number">
             <h3 class="room-type">${rooms[booking.roomNumber - 1].roomType}</h3>
