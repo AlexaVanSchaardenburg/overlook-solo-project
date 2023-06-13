@@ -23,7 +23,7 @@ h1{
   background: #FDD35D;
   border-radius: 2.5em;
   padding: 0.75em;
-  color: white; 
+  color: #2C2C54; 
   font-family: 'Oleo Script Swash Caps';
   font-size: 1.5em;
 }
@@ -90,6 +90,7 @@ button{
 
 #login-button{
   margin-top: 0.5em;
+  color: #2C2C54;
 }
 
 
@@ -272,7 +273,7 @@ nav{
 
 .book-room-button{
   background: #FDD35D;
-  color: white;
+  color: #2C2C54;
   font-family: 'Oleo Script Swash Caps';
   font-size: 1.2em;
   width: 5em;

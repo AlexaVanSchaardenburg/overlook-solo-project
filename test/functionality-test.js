@@ -65,30 +65,6 @@ describe(`Find user's bookings`, function() {
     });
   });
 
-// Leaving test below IF needed - ONLY in use if this is commented in 
-
-// describe('Convert bookings into rooms', function() {
-//     it('Should convert an array of bookings into an array of rooms', function() {
-//         let userBookings1 = findUserBookings(user1, bookings)
-//         let userRooms1 = convertBookingsToRooms(userBookings1, rooms)
-
-//         expect(userRooms1).to.deep.equal([
-//             {"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38},
-//             {"number":2,"roomType":"suite","bidet":false,"bedSize":"full","numBeds":2,"costPerNight":477.38}
-//         ])
-//     });
-//     it('Should convert a different array of bookings into an array of rooms', function() {
-//         let userBookings2 = findUserBookings(user2, bookings)
-//         let userRooms2 = convertBookingsToRooms(userBookings2, rooms)
-
-//         expect(userRooms2).to.deep.equal([
-//             {"number":5,"roomType":"single room","bidet":true,"bedSize":"queen","numBeds":2,"costPerNight":340.17},
-//             {"number":4,"roomType":"single room","bidet":false,"bedSize":"queen","numBeds":1,"costPerNight":429.44},
-//             {"number":3,"roomType":"single room","bidet":false,"bedSize":"king","numBeds":1,"costPerNight":491.14}
-//         ])
-//     });
-// });
-
 describe(`Calculate the total spent by the user on bookings`, function() {
     it('Should calculate the total spent by a user on all their bookings', function() {
         let userBookings1 = findUserBookings(user1, bookings)
