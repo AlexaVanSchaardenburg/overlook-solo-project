@@ -9,7 +9,7 @@ import {
 
 import {
     bookingsPage,
-    bookingsResponse,
+    // bookingsResponse,
     dashPage,
     errorBoxForNoDate,
     filterByTypeDisplay,
@@ -18,13 +18,78 @@ import {
     loginPage,
     navBar,
     returnToLoginButton,
-    roomsResponse,
+    // roomsResponse,
     selectDateDisplay,
-    selectedDateDisplay
+    selectedDateDisplay,
+
+
+
+
+    // getBookings,
+    // getRooms,
 
 } from './scripts.js'
 
 let user, rooms, bookings, currentDate;
+
+//API CALLS
+
+const getUser = (id) => {
+    return fetch(`http://localhost:3001/api/v1/customers/${id}`).then((response) => {
+        if(!response.ok) {
+            throw new Error(`${response.status}`)
+        } else {
+            return response.json();
+        }
+        }).catch(error => alert(`${error.message}`));
+};
+
+const getRooms = () => {
+    return fetch('http://localhost:3001/api/v1/rooms').then((response) => {
+      if(!response.ok) {
+        throw new Error(`${response.status}`)
+      } else {
+        return response.json();
+      }
+    }).catch(error => alert(`${error.message}`));
+  };
+  
+  const getBookings = () => {
+    return fetch('http://localhost:3001/api/v1/bookings').then((response) => {
+      if(!response.ok) {
+        throw new Error(`${response.status}`)
+      } else {
+        return response.json();
+      }
+    }).catch(error => alert(`${error.message}`));
+  };
+
+  const postBookings = (id) => {
+    fetch('http://localhost:3001/api/v1/bookings', {
+        method: 'POST',
+        body: JSON.stringify({
+          userID: user.id,
+          date: currentDate.replaceAll('-','/'),
+          roomNumber: parseInt(id)
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(() => getBookings())
+      .then(bookingsResponse => {
+        console.log(bookingsResponse)
+        bookings = bookingsResponse.bookings
+    }).then(() => {
+        displayBookings(user, rooms, bookings)
+    })
+    //   .then(res => console.log('res:', res))
+    //   .then(() => displayBookings(user, rooms, bookings))
+      .catch(err => alert(err));
+};
+
+
 
 //FUNCTIONS
 
@@ -70,8 +135,6 @@ const displayBookings = (user, rooms, bookings) => {
     let userBookings = findUserBookings(user, bookings);
     let userBookingsCost = calcTotalBookingsCost(rooms, userBookings);
 
-    returnToLoginButton.innerText = `Log out of user ${user.name}`;
-
     dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
         <h2 id="all-bookings">All Bookings</h2>
         <div class="flex">
@@ -87,18 +150,22 @@ const displayBookings = (user, rooms, bookings) => {
             <p class="booking-cost"><span class="material-symbols-rounded">monetization_on</span>${rooms[booking.roomNumber-1].costPerNight}</p>
         </div>`;
     })
-}
+};
+
+
+
+
+
+
+
 
 const displayPastBookings = (userID) => {
 
+    let bookingsResponse = getBookings()
+    let roomsResponse = getRooms()
+    let userResponse = getUser(userID)
+
     loginErrorMessage.innerText = ''
-    const userResponse = fetch(`http://localhost:3001/api/v1/customers/${userID}`).then((response) => {
-        if(!response.ok) {
-            throw new Error(`${response.status}`)
-        } else {
-            return response.json();
-        }
-        }).catch(error => alert(`${error.message}`));
 
     Promise.all([userResponse, roomsResponse, bookingsResponse]).then(([userData, roomsData, bookingsData]) => {
 
@@ -106,9 +173,27 @@ const displayPastBookings = (userID) => {
         rooms = roomsData.rooms;
         bookings = bookingsData.bookings;
 
+        returnToLoginButton.innerText = `Log out of user ${user.name}`;
+
         displayBookings(user, rooms, bookings)
     })
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const loginToSite = (usernameInput, passwordInput) => {
 
@@ -122,6 +207,19 @@ const loginToSite = (usernameInput, passwordInput) => {
         loginErrorMessage.innerText = 'Username or password is incorrect'
     };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const showAvailableRooms = (rooms) => {
     const checksIfBidet = (boolean) => {
@@ -148,7 +246,19 @@ const showAvailableRooms = (rooms) => {
         <button class="book-room-button" id="${room.number}">Book this room!</button>
       </div>`
     });
-}
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
 const showAllAvailableRooms = (dateSelector) => {
     currentDate = dateSelector.value;
@@ -160,6 +270,20 @@ const showAllAvailableRooms = (dateSelector) => {
         errorBoxForNoDate.innerText = 'Please select a date!'
     };
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const showFilteredRooms = (filterInput) => {
     let availableRooms = findAvailableRooms(currentDate, bookings, rooms);
@@ -174,34 +298,32 @@ const showFilteredRooms = (filterInput) => {
     };
 };
 
+
+
+
+
+
+
+
+
+
+
+
 const bookRoom = (event) => {
-    fetch('http://localhost:3001/api/v1/bookings', {
-        method: 'POST',
-        body: JSON.stringify({
-          userID: user.id,
-          date: currentDate.replaceAll('-','/'),
-          roomNumber: parseInt(event.target.id)
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(response => response.json())
-      .then(() => {
-        updateBookings(event)
-      })
-      .catch(err => alert(err));
+    postBookings(event.target.id)
 };
 
-const updateBookings = (event) => {
-    fetch('http://localhost:3001/api/v1/bookings')
-    .then(response => response.json())
-    .then(bookingsData => {
-      bookings = bookingsData.bookings
-      event.target.innerText = 'Booking complete!'
-      return bookings
-    })
-}
+
+
+
+
+
+
+
+
+
+
+
 
 export {
     bookRoom,
