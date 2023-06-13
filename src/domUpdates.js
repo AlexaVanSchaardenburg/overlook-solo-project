@@ -124,7 +124,7 @@ const displayBookings = (user, rooms, bookings) => {
     let userBookingsCost = calcTotalBookingsCost(rooms, userBookings);
 
     dashPage.innerHTML = `<div class="flex" id="bookings-title-bar">
-        <h2 id="all-bookings">All Bookings</h2>
+        <h2 id="all-bookings">Past Bookings</h2>
         <div class="flex">
             <p id="total-cost-label">total spent: </p>
             <p id="total-cost"><span class="material-symbols-rounded">monetization_on</span>${userBookingsCost.toFixed(2)}</p>
@@ -154,7 +154,7 @@ const displayPastBookings = (userID) => {
         rooms = roomsData.rooms;
         bookings = bookingsData.bookings;
 
-        returnToLoginButton.innerText = `Log out of user ${user.name}`;
+        returnToLoginButton.innerHTML = `Log out of user ${user.name}`;
 
         displayBookings(user, rooms, bookings)
     })

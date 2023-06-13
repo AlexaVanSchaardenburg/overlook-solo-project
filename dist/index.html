@@ -22,13 +22,9 @@
       <div id="login-box">
         <h1>Login to sweet dreams ...</h3>
         <form id="login-form">
-          <label for="username-input"><span class="material-symbols-outlined">
-            account_circle
-            </span>username:</label>
+          <label for="username-input">username:</label>
           <input type="text" class="login-input" id="username-input" placeholder="type username here">
-          <label for="password-input"><span class="material-symbols-outlined">
-            lock
-            </span>password:</label>
+          <label for="password-input">password:</label>
           <input type="text" class="login-input" id="password-input" placeholder="type password here">
           <p class="login-error-message"></p>
           <button id="login-button">login</button>
@@ -42,13 +38,13 @@
       <div class="flex nav-buttons">
         <h1 id="nav-header">Book your next retreat now</h1>
         <div class="flex">
-          <button class="home-button"><span class="material-symbols-rounded">home</span></button>
+          <button class="home-button"><span class="material-symbols-rounded">home</span>View Past Bookings</button>
         <button id="return-to-login">username</button>
         </div>
       </div>
         <div class="flex">
           <form class="flex dash-element nav-info select-date-form hidden">
-            <label for="date-selector">Select date:</label>
+            <label for="date-selector">Select booking date:</label>
             <input type="date" id="date-selector" value="select date" min="2020-01-01" max="2026-12-31">
             <button id="view-available-rooms">choose a room</button>
             <p class="error-for-no-date"></p>
@@ -74,7 +70,7 @@
 <!-- DASH -->
   <main class="dashboard hidden">
     <div class="flex" id="bookings-title-bar">
-      <h2 id="all-bookings">All Bookings</h2>
+      <h2 id="all-bookings">Past Bookings</h2>
       <div class="flex">
         <p id="total-cost-label">total spent: </p>
         <p id="total-cost"><span class="material-symbols-rounded">
